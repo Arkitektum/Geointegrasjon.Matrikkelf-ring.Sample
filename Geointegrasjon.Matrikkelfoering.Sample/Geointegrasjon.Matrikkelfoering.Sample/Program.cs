@@ -18,18 +18,48 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
     {
         static void Main(string[] args)
         {
-
-
             //Datamodell matrikkelføring
-            var byggesak = new GenerateN1().GenerateSample();
+            var byggesakG1 = new GenerateN1().GenerateSample();
+            List<dokument> dokumenter = new List<dokument>();
 
-            var serializer = new System.Xml.Serialization.XmlSerializer(byggesak.GetType());
+            var serializer = new System.Xml.Serialization.XmlSerializer(byggesakG1.GetType());
             var stringWriter = new Utf8StringWriter();
-            serializer.Serialize(stringWriter, byggesak);
+            serializer.Serialize(stringWriter, byggesakG1);
             string xml = stringWriter.ToString();
+            dokument byggesakxml = new dokument()
+            {
+                dokumentType = "Byggesak",
+                data = System.Text.Encoding.UTF8.GetBytes(xml),
+                filnavn = "byggesak.xml",
+                mimetype = "application/xml"
+            };
+            dokumenter.Add(byggesakxml);
 
 
-     
+            // G1
+            var tegning1 = GetDokTegninger();
+            dokumenter.Add(tegning1);
+            SendByggesakToSvarut(byggesakG1, dokumenter);
+
+            // G2
+            // TODO: Add Matrikkelopplysninger
+            var byggesakG2 = new GenerateN2().GenerateSample();
+            SendByggesakToSvarut(byggesakG2, dokumenter);
+            
+            // G3
+            var bim = GetDokByggesaksBim();
+            dokumenter.Add(bim);
+
+            // G4
+            var sitplan = GetDokSituasjonsPlan();
+            dokumenter.Add(sitplan);
+        }
+
+        private static void SendByggesakToSvarut(ByggesakType byggesak, List<dokument> dokumenter)
+        {
+           
+
+
             //*** Vedleggstyper
             // Situasjonsplan, Avkjoerselsplan, 
             // TegningEksisterendePlan, TegningNyPlan, TegningEksisterendeSnitt, TegningNyttSnitt, TegningEksisterendeFasade, TegningNyFasade
@@ -37,25 +67,47 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
             // Vedtak
             // - se beskrivelse https://dibk-utvikling.atlassian.net/wiki/spaces/FB/pages/270139400/Vedlegg
 
-            dokument byggesakxml = new dokument() { dokumentType = "Byggesak", data = System.Text.Encoding.UTF8.GetBytes(xml), filnavn = "byggesak.xml", mimetype = "application/xml" };
-
-            dokument sitplan = new dokument() { dokumentType = "Situasjonsplan", data = new byte[1], filnavn = "sitplan.pdf", mimetype = "application/pdf" };
-            dokument tegning1 = new dokument() { dokumentType = "TegningNyttSnitt", data = new byte[1], filnavn = "tegning.pdf", mimetype = "application/pdf" };
-
-            dokument bim = new dokument() { dokumentType = "ByggesaksBIM", data = new byte[1], filnavn = "bim.ifc", mimetype = "application/ifc" };
-
-
-            List<dokument> dokumenter = new List<dokument>();
-            dokumenter.Add(byggesakxml);
-            dokumenter.Add(sitplan);
-            dokumenter.Add(tegning1);
-            dokumenter.Add(bim);
-
+      
             //Opplasting FIKS
             var svarut = new SvarUtService();
             string orgnrTilKommunen = ConfigurationManager.AppSettings["OrgNrReceiver"];
             svarut.Send(byggesak, orgnrTilKommunen, "Matrikkelføring klient", dokumenter.ToArray());
+        }
 
+        private static dokument GetDokByggesaksBim()
+        {
+            dokument bim = new dokument()
+            {
+                dokumentType = "ByggesaksBIM",
+                data = new byte[1],
+                filnavn = "bim.ifc",
+                mimetype = "application/ifc"
+            };
+            return bim;
+        }
+
+        private static dokument GetDokTegninger()
+        {
+            dokument tegning1 = new dokument()
+            {
+                dokumentType = "TegningNyttSnitt",
+                data = new byte[1],
+                filnavn = "tegning.pdf",
+                mimetype = "application/pdf"
+            };
+            return tegning1;
+        }
+
+        private static dokument GetDokSituasjonsPlan()
+        {
+            dokument sitplan = new dokument()
+            {
+                dokumentType = "Situasjonsplan",
+                data = new byte[1],
+                filnavn = "sitplan.pdf",
+                mimetype = "application/pdf"
+            };
+            return sitplan;
         }
     }
 }
