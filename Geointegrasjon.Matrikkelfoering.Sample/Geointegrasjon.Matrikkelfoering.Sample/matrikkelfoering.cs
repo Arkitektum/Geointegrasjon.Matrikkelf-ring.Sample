@@ -130,85 +130,12 @@ namespace no.geointegrasjon.rep.matrikkelfoering {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
-    [System.Xml.Serialization.XmlRootAttribute("Boligadresse", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
-    public partial class BoligadresseType {
-        
-        private string adressekodeField;
-        
-        private string adressenavnField;
-        
-        private string adressenummerField;
-        
-        private string adressebokstavField;
-        
-        private string seksjonsnummerField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string adressekode {
-            get {
-                return this.adressekodeField;
-            }
-            set {
-                this.adressekodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string adressenavn {
-            get {
-                return this.adressenavnField;
-            }
-            set {
-                this.adressenavnField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string adressenummer {
-            get {
-                return this.adressenummerField;
-            }
-            set {
-                this.adressenummerField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string adressebokstav {
-            get {
-                return this.adressebokstavField;
-            }
-            set {
-                this.adressebokstavField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string seksjonsnummer {
-            get {
-                return this.seksjonsnummerField;
-            }
-            set {
-                this.seksjonsnummerField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
     [System.Xml.Serialization.XmlRootAttribute("Bruksenhet", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
     public partial class BruksenhetType {
         
         private BruksenhetsnummerType bruksenhetsnummerField;
+        
+        private BruksenhetstypeKodeType bruksenhetstypeField;
         
         private System.Nullable<double> bruksarealField;
         
@@ -222,13 +149,11 @@ namespace no.geointegrasjon.rep.matrikkelfoering {
         
         private string antallWCField;
         
-        private BruksenhetstypeKodeType bruksenhetstypeField;
-        
-        private BoligadresseType adresseField;
-        
-        private EndringsstatusType endringField;
+        private AdresseType adresseField;
         
         private MatrikkelnummerType matrikkelnummerField;
+        
+        private EndringsstatusType endringField;
         
         /// <remarks/>
         public BruksenhetsnummerType bruksenhetsnummer {
@@ -237,6 +162,17 @@ namespace no.geointegrasjon.rep.matrikkelfoering {
             }
             set {
                 this.bruksenhetsnummerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public BruksenhetstypeKodeType bruksenhetstype {
+            get {
+                return this.bruksenhetstypeField;
+            }
+            set {
+                this.bruksenhetstypeField = value;
             }
         }
         
@@ -308,33 +244,12 @@ namespace no.geointegrasjon.rep.matrikkelfoering {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public BruksenhetstypeKodeType bruksenhetstype {
-            get {
-                return this.bruksenhetstypeField;
-            }
-            set {
-                this.bruksenhetstypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public BoligadresseType adresse {
+        public AdresseType adresse {
             get {
                 return this.adresseField;
             }
             set {
                 this.adresseField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public EndringsstatusType endring {
-            get {
-                return this.endringField;
-            }
-            set {
-                this.endringField = value;
             }
         }
         
@@ -346,6 +261,16 @@ namespace no.geointegrasjon.rep.matrikkelfoering {
             }
             set {
                 this.matrikkelnummerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public EndringsstatusType endring {
+            get {
+                return this.endringField;
+            }
+            set {
+                this.endringField = value;
             }
         }
     }
@@ -438,8 +363,8 @@ namespace no.geointegrasjon.rep.matrikkelfoering {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
-    [System.Xml.Serialization.XmlRootAttribute("KjoekkentilgangKode", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
-    public partial class KjoekkentilgangKodeType {
+    [System.Xml.Serialization.XmlRootAttribute("BruksenhetstypeKode", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
+    public partial class BruksenhetstypeKodeType {
         
         private string kodeField;
         
@@ -472,8 +397,8 @@ namespace no.geointegrasjon.rep.matrikkelfoering {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
-    [System.Xml.Serialization.XmlRootAttribute("BruksenhetstypeKode", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
-    public partial class BruksenhetstypeKodeType {
+    [System.Xml.Serialization.XmlRootAttribute("KjoekkentilgangKode", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
+    public partial class KjoekkentilgangKodeType {
         
         private string kodeField;
         
@@ -498,25 +423,6 @@ namespace no.geointegrasjon.rep.matrikkelfoering {
                 this.beskrivelseField = value;
             }
         }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
-    public enum EndringsstatusType {
-        
-        /// <remarks/>
-        Eksisterende,
-        
-        /// <remarks/>
-        Ny,
-        
-        /// <remarks/>
-        Endret,
-        
-        /// <remarks/>
-        Fjernet,
     }
     
     /// <remarks/>
@@ -597,15 +503,50 @@ namespace no.geointegrasjon.rep.matrikkelfoering {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
     [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
+    public enum EndringsstatusType {
+        
+        /// <remarks/>
+        Eksisterende,
+        
+        /// <remarks/>
+        Ny,
+        
+        /// <remarks/>
+        Endret,
+        
+        /// <remarks/>
+        Fjernet,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
     [System.Xml.Serialization.XmlRootAttribute("Byggesak", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
     public partial class ByggesakType {
         
-        private string adresseField;
+        private string systemIdField;
+        
+        private string tittelField;
+        
+        private SaksnummerType saksnummerField;
+        
+        private ProsesskategoriType kategoriField;
+        
+        private TiltaktypeType[] tiltakstypeField;
+        
+        private VedtakType vedtakField;
+        
+        private PartType ansvarligSoekerField;
+        
+        private PartType tiltakshaverField;
         
         private MatrikkelopplysningerType matrikkelopplysningerField;
+        
+        private string adresseField;
         
         private SaksnummerType[] referanseAndreSakerField;
         
@@ -613,24 +554,89 @@ namespace no.geointegrasjon.rep.matrikkelfoering {
         
         private System.DateTime registrertDatoField;
         
-        private SaksnummerType saksnummerField;
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string systemId {
+            get {
+                return this.systemIdField;
+            }
+            set {
+                this.systemIdField = value;
+            }
+        }
         
-        private string systemIdField;
+        /// <remarks/>
+        public string tittel {
+            get {
+                return this.tittelField;
+            }
+            set {
+                this.tittelField = value;
+            }
+        }
         
-        private VedtakType vedtakField;
+        /// <remarks/>
+        public SaksnummerType saksnummer {
+            get {
+                return this.saksnummerField;
+            }
+            set {
+                this.saksnummerField = value;
+            }
+        }
         
-        private string tittelField;
+        /// <remarks/>
+        public ProsesskategoriType kategori {
+            get {
+                return this.kategoriField;
+            }
+            set {
+                this.kategoriField = value;
+            }
+        }
         
-        private TiltaktypeType[] tiltakstypeField;
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("tiltaktype", IsNullable=false)]
+        public TiltaktypeType[] tiltakstype {
+            get {
+                return this.tiltakstypeField;
+            }
+            set {
+                this.tiltakstypeField = value;
+            }
+        }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string adresse {
+        public VedtakType vedtak {
             get {
-                return this.adresseField;
+                return this.vedtakField;
             }
             set {
-                this.adresseField = value;
+                this.vedtakField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public PartType ansvarligSoeker {
+            get {
+                return this.ansvarligSoekerField;
+            }
+            set {
+                this.ansvarligSoekerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public PartType tiltakshaver {
+            get {
+                return this.tiltakshaverField;
+            }
+            set {
+                this.tiltakshaverField = value;
             }
         }
         
@@ -642,6 +648,17 @@ namespace no.geointegrasjon.rep.matrikkelfoering {
             }
             set {
                 this.matrikkelopplysningerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string adresse {
+            get {
+                return this.adresseField;
+            }
+            set {
+                this.adresseField = value;
             }
         }
         
@@ -678,768 +695,6 @@ namespace no.geointegrasjon.rep.matrikkelfoering {
                 this.registrertDatoField = value;
             }
         }
-        
-        /// <remarks/>
-        public SaksnummerType saksnummer {
-            get {
-                return this.saksnummerField;
-            }
-            set {
-                this.saksnummerField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string systemId {
-            get {
-                return this.systemIdField;
-            }
-            set {
-                this.systemIdField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public VedtakType vedtak {
-            get {
-                return this.vedtakField;
-            }
-            set {
-                this.vedtakField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string tittel {
-            get {
-                return this.tittelField;
-            }
-            set {
-                this.tittelField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("tiltaktype", IsNullable=false)]
-        public TiltaktypeType[] tiltakstype {
-            get {
-                return this.tiltakstypeField;
-            }
-            set {
-                this.tiltakstypeField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
-    [System.Xml.Serialization.XmlRootAttribute("Matrikkelopplysninger", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
-    public partial class MatrikkelopplysningerType {
-        
-        private MatrikkelnummerType[] eiendomsidentifikasjonField;
-        
-        private AdresseType[] adresseField;
-        
-        private BygningType[] bygningField;
-        
-        private System.Nullable<System.DateTime> oppdatertDatoField;
-        
-        private bool oppdatertDatoFieldSpecified;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("matrikkelnummer", IsNullable=false)]
-        public MatrikkelnummerType[] eiendomsidentifikasjon {
-            get {
-                return this.eiendomsidentifikasjonField;
-            }
-            set {
-                this.eiendomsidentifikasjonField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("adresse", IsNullable=false)]
-        public AdresseType[] adresse {
-            get {
-                return this.adresseField;
-            }
-            set {
-                this.adresseField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("bygning", IsNullable=false)]
-        public BygningType[] bygning {
-            get {
-                return this.bygningField;
-            }
-            set {
-                this.bygningField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<System.DateTime> oppdatertDato {
-            get {
-                return this.oppdatertDatoField;
-            }
-            set {
-                this.oppdatertDatoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool oppdatertDatoSpecified {
-            get {
-                return this.oppdatertDatoFieldSpecified;
-            }
-            set {
-                this.oppdatertDatoFieldSpecified = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
-    [System.Xml.Serialization.XmlRootAttribute("Bygning", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
-    public partial class BygningType {
-        
-        private string bygningsnummerField;
-        
-        private NaeringsgruppeType naeringsgruppeField;
-        
-        private BygningstypeType bygningstypeField;
-        
-        private System.Nullable<double> bebygdArealField;
-        
-        private bool bebygdArealFieldSpecified;
-        
-        private EtasjeType[] etasjerField;
-        
-        private AvloepstilknytningType avlopField;
-        
-        private BruksenhetType[] bruksenheterField;
-        
-        private EnergiforsyningType energiforsyningField;
-        
-        private VanntilknytningType vannforsyningField;
-        
-        private System.Nullable<bool> harHeisField;
-        
-        private bool harHeisFieldSpecified;
-        
-        private EndringsstatusType endringField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string bygningsnummer {
-            get {
-                return this.bygningsnummerField;
-            }
-            set {
-                this.bygningsnummerField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public NaeringsgruppeType naeringsgruppe {
-            get {
-                return this.naeringsgruppeField;
-            }
-            set {
-                this.naeringsgruppeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public BygningstypeType bygningstype {
-            get {
-                return this.bygningstypeField;
-            }
-            set {
-                this.bygningstypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<double> bebygdAreal {
-            get {
-                return this.bebygdArealField;
-            }
-            set {
-                this.bebygdArealField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool bebygdArealSpecified {
-            get {
-                return this.bebygdArealFieldSpecified;
-            }
-            set {
-                this.bebygdArealFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("etasje", IsNullable=false)]
-        public EtasjeType[] etasjer {
-            get {
-                return this.etasjerField;
-            }
-            set {
-                this.etasjerField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public AvloepstilknytningType avlop {
-            get {
-                return this.avlopField;
-            }
-            set {
-                this.avlopField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("bruksenhet", IsNullable=false)]
-        public BruksenhetType[] bruksenheter {
-            get {
-                return this.bruksenheterField;
-            }
-            set {
-                this.bruksenheterField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public EnergiforsyningType energiforsyning {
-            get {
-                return this.energiforsyningField;
-            }
-            set {
-                this.energiforsyningField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public VanntilknytningType vannforsyning {
-            get {
-                return this.vannforsyningField;
-            }
-            set {
-                this.vannforsyningField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<bool> harHeis {
-            get {
-                return this.harHeisField;
-            }
-            set {
-                this.harHeisField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool harHeisSpecified {
-            get {
-                return this.harHeisFieldSpecified;
-            }
-            set {
-                this.harHeisFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public EndringsstatusType endring {
-            get {
-                return this.endringField;
-            }
-            set {
-                this.endringField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
-    [System.Xml.Serialization.XmlRootAttribute("Naeringsgruppe", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
-    public partial class NaeringsgruppeType {
-        
-        private string kodeField;
-        
-        private string beskrivelseField;
-        
-        /// <remarks/>
-        public string kode {
-            get {
-                return this.kodeField;
-            }
-            set {
-                this.kodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string beskrivelse {
-            get {
-                return this.beskrivelseField;
-            }
-            set {
-                this.beskrivelseField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
-    [System.Xml.Serialization.XmlRootAttribute("Bygningstype", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
-    public partial class BygningstypeType {
-        
-        private string kodeField;
-        
-        private string beskrivelseField;
-        
-        /// <remarks/>
-        public string kode {
-            get {
-                return this.kodeField;
-            }
-            set {
-                this.kodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string beskrivelse {
-            get {
-                return this.beskrivelseField;
-            }
-            set {
-                this.beskrivelseField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
-    [System.Xml.Serialization.XmlRootAttribute("Etasje", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
-    public partial class EtasjeType {
-        
-        private string antallBoenheterField;
-        
-        private System.Nullable<double> bruksarealTilAnnetField;
-        
-        private bool bruksarealTilAnnetFieldSpecified;
-        
-        private System.Nullable<double> bruksarealTilBoligField;
-        
-        private bool bruksarealTilBoligFieldSpecified;
-        
-        private System.Nullable<double> bruksarealTotaltField;
-        
-        private bool bruksarealTotaltFieldSpecified;
-        
-        private string etasjenummerField;
-        
-        private EtasjeplanType etasjeplanField;
-        
-        private System.Nullable<double> bruttoarealTilBoligField;
-        
-        private bool bruttoarealTilBoligFieldSpecified;
-        
-        private System.Nullable<double> bruttoarealTilAnnetField;
-        
-        private bool bruttoarealTilAnnetFieldSpecified;
-        
-        private EndringsstatusType endringField;
-        
-        private System.Nullable<double> bruttoarealTotaltField;
-        
-        private bool bruttoarealTotaltFieldSpecified;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer", IsNullable=true)]
-        public string antallBoenheter {
-            get {
-                return this.antallBoenheterField;
-            }
-            set {
-                this.antallBoenheterField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<double> bruksarealTilAnnet {
-            get {
-                return this.bruksarealTilAnnetField;
-            }
-            set {
-                this.bruksarealTilAnnetField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool bruksarealTilAnnetSpecified {
-            get {
-                return this.bruksarealTilAnnetFieldSpecified;
-            }
-            set {
-                this.bruksarealTilAnnetFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<double> bruksarealTilBolig {
-            get {
-                return this.bruksarealTilBoligField;
-            }
-            set {
-                this.bruksarealTilBoligField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool bruksarealTilBoligSpecified {
-            get {
-                return this.bruksarealTilBoligFieldSpecified;
-            }
-            set {
-                this.bruksarealTilBoligFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<double> bruksarealTotalt {
-            get {
-                return this.bruksarealTotaltField;
-            }
-            set {
-                this.bruksarealTotaltField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool bruksarealTotaltSpecified {
-            get {
-                return this.bruksarealTotaltFieldSpecified;
-            }
-            set {
-                this.bruksarealTotaltFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string etasjenummer {
-            get {
-                return this.etasjenummerField;
-            }
-            set {
-                this.etasjenummerField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public EtasjeplanType etasjeplan {
-            get {
-                return this.etasjeplanField;
-            }
-            set {
-                this.etasjeplanField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<double> bruttoarealTilBolig {
-            get {
-                return this.bruttoarealTilBoligField;
-            }
-            set {
-                this.bruttoarealTilBoligField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool bruttoarealTilBoligSpecified {
-            get {
-                return this.bruttoarealTilBoligFieldSpecified;
-            }
-            set {
-                this.bruttoarealTilBoligFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<double> bruttoarealTilAnnet {
-            get {
-                return this.bruttoarealTilAnnetField;
-            }
-            set {
-                this.bruttoarealTilAnnetField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool bruttoarealTilAnnetSpecified {
-            get {
-                return this.bruttoarealTilAnnetFieldSpecified;
-            }
-            set {
-                this.bruttoarealTilAnnetFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public EndringsstatusType endring {
-            get {
-                return this.endringField;
-            }
-            set {
-                this.endringField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<double> bruttoarealTotalt {
-            get {
-                return this.bruttoarealTotaltField;
-            }
-            set {
-                this.bruttoarealTotaltField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool bruttoarealTotaltSpecified {
-            get {
-                return this.bruttoarealTotaltFieldSpecified;
-            }
-            set {
-                this.bruttoarealTotaltFieldSpecified = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
-    [System.Xml.Serialization.XmlRootAttribute("Energiforsyning", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
-    public partial class EnergiforsyningType {
-        
-        private VarmefordelingType[] varmefordelingField;
-        
-        private EnergiforsyningTypeType[] energiforsyningField;
-        
-        private System.Nullable<bool> relevantField;
-        
-        private bool relevantFieldSpecified;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("varmefordeling", IsNullable=false)]
-        public VarmefordelingType[] varmefordeling {
-            get {
-                return this.varmefordelingField;
-            }
-            set {
-                this.varmefordelingField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("energiforsyningType", IsNullable=false)]
-        public EnergiforsyningTypeType[] energiforsyning {
-            get {
-                return this.energiforsyningField;
-            }
-            set {
-                this.energiforsyningField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<bool> relevant {
-            get {
-                return this.relevantField;
-            }
-            set {
-                this.relevantField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool relevantSpecified {
-            get {
-                return this.relevantFieldSpecified;
-            }
-            set {
-                this.relevantFieldSpecified = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
-    [System.Xml.Serialization.XmlRootAttribute("Varmefordeling", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
-    public partial class VarmefordelingType {
-        
-        private string kodeField;
-        
-        private string beskrivelseField;
-        
-        /// <remarks/>
-        public string kode {
-            get {
-                return this.kodeField;
-            }
-            set {
-                this.kodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string beskrivelse {
-            get {
-                return this.beskrivelseField;
-            }
-            set {
-                this.beskrivelseField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
-    [System.Xml.Serialization.XmlRootAttribute("EnergiforsyningType", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
-    public partial class EnergiforsyningTypeType {
-        
-        private string kodeField;
-        
-        private string beskrivelseField;
-        
-        /// <remarks/>
-        public string kode {
-            get {
-                return this.kodeField;
-            }
-            set {
-                this.kodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string beskrivelse {
-            get {
-                return this.beskrivelseField;
-            }
-            set {
-                this.beskrivelseField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
-    [System.Xml.Serialization.XmlRootAttribute("Vanntilknytning", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
-    public partial class VanntilknytningType {
-        
-        private string kodeField;
-        
-        private string beskrivelseField;
-        
-        /// <remarks/>
-        public string kode {
-            get {
-                return this.kodeField;
-            }
-            set {
-                this.kodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string beskrivelse {
-            get {
-                return this.beskrivelseField;
-            }
-            set {
-                this.beskrivelseField = value;
-            }
-        }
     }
     
     /// <remarks/>
@@ -1474,6 +729,74 @@ namespace no.geointegrasjon.rep.matrikkelfoering {
             }
             set {
                 this.sakssekvensnummerField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
+    [System.Xml.Serialization.XmlRootAttribute("Prosesskategori", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
+    public partial class ProsesskategoriType {
+        
+        private string kodeField;
+        
+        private string beskrivelseField;
+        
+        /// <remarks/>
+        public string kode {
+            get {
+                return this.kodeField;
+            }
+            set {
+                this.kodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string beskrivelse {
+            get {
+                return this.beskrivelseField;
+            }
+            set {
+                this.beskrivelseField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
+    [System.Xml.Serialization.XmlRootAttribute("Tiltaktype", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
+    public partial class TiltaktypeType {
+        
+        private string kodeField;
+        
+        private string beskrivelseField;
+        
+        /// <remarks/>
+        public string kode {
+            get {
+                return this.kodeField;
+            }
+            set {
+                this.kodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string beskrivelse {
+            get {
+                return this.beskrivelseField;
+            }
+            set {
+                this.beskrivelseField = value;
             }
         }
     }
@@ -1648,8 +971,915 @@ namespace no.geointegrasjon.rep.matrikkelfoering {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
-    [System.Xml.Serialization.XmlRootAttribute("Tiltaktype", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
-    public partial class TiltaktypeType {
+    [System.Xml.Serialization.XmlRootAttribute("Part", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
+    public partial class PartType {
+        
+        private PartstypeType partstypeField;
+        
+        private string foedselsnummerField;
+        
+        private string organisasjonsnummerField;
+        
+        private string navnField;
+        
+        private EnkelAdresseType adresseField;
+        
+        private string telefonnummerField;
+        
+        private string mobilnummerField;
+        
+        private string epostField;
+        
+        /// <remarks/>
+        public PartstypeType partstype {
+            get {
+                return this.partstypeField;
+            }
+            set {
+                this.partstypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string foedselsnummer {
+            get {
+                return this.foedselsnummerField;
+            }
+            set {
+                this.foedselsnummerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string organisasjonsnummer {
+            get {
+                return this.organisasjonsnummerField;
+            }
+            set {
+                this.organisasjonsnummerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string navn {
+            get {
+                return this.navnField;
+            }
+            set {
+                this.navnField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public EnkelAdresseType adresse {
+            get {
+                return this.adresseField;
+            }
+            set {
+                this.adresseField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string telefonnummer {
+            get {
+                return this.telefonnummerField;
+            }
+            set {
+                this.telefonnummerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string mobilnummer {
+            get {
+                return this.mobilnummerField;
+            }
+            set {
+                this.mobilnummerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string epost {
+            get {
+                return this.epostField;
+            }
+            set {
+                this.epostField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
+    [System.Xml.Serialization.XmlRootAttribute("Partstype", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
+    public partial class PartstypeType {
+        
+        private string kodeField;
+        
+        private string beskrivelseField;
+        
+        /// <remarks/>
+        public string kode {
+            get {
+                return this.kodeField;
+            }
+            set {
+                this.kodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string beskrivelse {
+            get {
+                return this.beskrivelseField;
+            }
+            set {
+                this.beskrivelseField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
+    [System.Xml.Serialization.XmlRootAttribute("EnkelAdresse", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
+    public partial class EnkelAdresseType {
+        
+        private string adresselinje1Field;
+        
+        private string adresselinje2Field;
+        
+        private string adresselinje3Field;
+        
+        private string postnrField;
+        
+        private string poststedField;
+        
+        private string landkodeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string adresselinje1 {
+            get {
+                return this.adresselinje1Field;
+            }
+            set {
+                this.adresselinje1Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string adresselinje2 {
+            get {
+                return this.adresselinje2Field;
+            }
+            set {
+                this.adresselinje2Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string adresselinje3 {
+            get {
+                return this.adresselinje3Field;
+            }
+            set {
+                this.adresselinje3Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string postnr {
+            get {
+                return this.postnrField;
+            }
+            set {
+                this.postnrField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string poststed {
+            get {
+                return this.poststedField;
+            }
+            set {
+                this.poststedField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string landkode {
+            get {
+                return this.landkodeField;
+            }
+            set {
+                this.landkodeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
+    [System.Xml.Serialization.XmlRootAttribute("Matrikkelopplysninger", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
+    public partial class MatrikkelopplysningerType {
+        
+        private MatrikkelnummerType[] eiendomsidentifikasjonField;
+        
+        private AdresseType[] adresseField;
+        
+        private BygningType[] bygningField;
+        
+        private System.Nullable<System.DateTime> oppdatertDatoField;
+        
+        private bool oppdatertDatoFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("matrikkelnummer", IsNullable=false)]
+        public MatrikkelnummerType[] eiendomsidentifikasjon {
+            get {
+                return this.eiendomsidentifikasjonField;
+            }
+            set {
+                this.eiendomsidentifikasjonField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("adresse", IsNullable=false)]
+        public AdresseType[] adresse {
+            get {
+                return this.adresseField;
+            }
+            set {
+                this.adresseField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("bygning", IsNullable=false)]
+        public BygningType[] bygning {
+            get {
+                return this.bygningField;
+            }
+            set {
+                this.bygningField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<System.DateTime> oppdatertDato {
+            get {
+                return this.oppdatertDatoField;
+            }
+            set {
+                this.oppdatertDatoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool oppdatertDatoSpecified {
+            get {
+                return this.oppdatertDatoFieldSpecified;
+            }
+            set {
+                this.oppdatertDatoFieldSpecified = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
+    [System.Xml.Serialization.XmlRootAttribute("Bygning", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
+    public partial class BygningType {
+        
+        private string bygningsnummerField;
+        
+        private NaeringsgruppeType naeringsgruppeField;
+        
+        private BygningstypeType bygningstypeField;
+        
+        private System.Nullable<double> bebygdArealField;
+        
+        private bool bebygdArealFieldSpecified;
+        
+        private BruksenhetType[] bruksenheterField;
+        
+        private EtasjeType[] etasjerField;
+        
+        private AvloepstilknytningType avlopField;
+        
+        private EnergiforsyningType energiforsyningField;
+        
+        private VanntilknytningType vannforsyningField;
+        
+        private System.Nullable<bool> harHeisField;
+        
+        private bool harHeisFieldSpecified;
+        
+        private EndringsstatusType endringField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string bygningsnummer {
+            get {
+                return this.bygningsnummerField;
+            }
+            set {
+                this.bygningsnummerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public NaeringsgruppeType naeringsgruppe {
+            get {
+                return this.naeringsgruppeField;
+            }
+            set {
+                this.naeringsgruppeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public BygningstypeType bygningstype {
+            get {
+                return this.bygningstypeField;
+            }
+            set {
+                this.bygningstypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<double> bebygdAreal {
+            get {
+                return this.bebygdArealField;
+            }
+            set {
+                this.bebygdArealField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool bebygdArealSpecified {
+            get {
+                return this.bebygdArealFieldSpecified;
+            }
+            set {
+                this.bebygdArealFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("bruksenhet", IsNullable=false)]
+        public BruksenhetType[] bruksenheter {
+            get {
+                return this.bruksenheterField;
+            }
+            set {
+                this.bruksenheterField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("etasje", IsNullable=false)]
+        public EtasjeType[] etasjer {
+            get {
+                return this.etasjerField;
+            }
+            set {
+                this.etasjerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public AvloepstilknytningType avlop {
+            get {
+                return this.avlopField;
+            }
+            set {
+                this.avlopField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public EnergiforsyningType energiforsyning {
+            get {
+                return this.energiforsyningField;
+            }
+            set {
+                this.energiforsyningField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public VanntilknytningType vannforsyning {
+            get {
+                return this.vannforsyningField;
+            }
+            set {
+                this.vannforsyningField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<bool> harHeis {
+            get {
+                return this.harHeisField;
+            }
+            set {
+                this.harHeisField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool harHeisSpecified {
+            get {
+                return this.harHeisFieldSpecified;
+            }
+            set {
+                this.harHeisFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public EndringsstatusType endring {
+            get {
+                return this.endringField;
+            }
+            set {
+                this.endringField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
+    [System.Xml.Serialization.XmlRootAttribute("Naeringsgruppe", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
+    public partial class NaeringsgruppeType {
+        
+        private string kodeField;
+        
+        private string beskrivelseField;
+        
+        /// <remarks/>
+        public string kode {
+            get {
+                return this.kodeField;
+            }
+            set {
+                this.kodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string beskrivelse {
+            get {
+                return this.beskrivelseField;
+            }
+            set {
+                this.beskrivelseField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
+    [System.Xml.Serialization.XmlRootAttribute("Bygningstype", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
+    public partial class BygningstypeType {
+        
+        private string kodeField;
+        
+        private string beskrivelseField;
+        
+        /// <remarks/>
+        public string kode {
+            get {
+                return this.kodeField;
+            }
+            set {
+                this.kodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string beskrivelse {
+            get {
+                return this.beskrivelseField;
+            }
+            set {
+                this.beskrivelseField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
+    [System.Xml.Serialization.XmlRootAttribute("Etasje", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
+    public partial class EtasjeType {
+        
+        private string etasjenummerField;
+        
+        private EtasjeplanType etasjeplanField;
+        
+        private string antallBoenheterField;
+        
+        private System.Nullable<double> bruksarealTilAnnetField;
+        
+        private bool bruksarealTilAnnetFieldSpecified;
+        
+        private System.Nullable<double> bruksarealTilBoligField;
+        
+        private bool bruksarealTilBoligFieldSpecified;
+        
+        private System.Nullable<double> bruksarealTotaltField;
+        
+        private bool bruksarealTotaltFieldSpecified;
+        
+        private System.Nullable<double> bruttoarealTilBoligField;
+        
+        private bool bruttoarealTilBoligFieldSpecified;
+        
+        private System.Nullable<double> bruttoarealTotaltField;
+        
+        private bool bruttoarealTotaltFieldSpecified;
+        
+        private System.Nullable<double> bruttoarealTilAnnetField;
+        
+        private bool bruttoarealTilAnnetFieldSpecified;
+        
+        private EndringsstatusType endringField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
+        public string etasjenummer {
+            get {
+                return this.etasjenummerField;
+            }
+            set {
+                this.etasjenummerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public EtasjeplanType etasjeplan {
+            get {
+                return this.etasjeplanField;
+            }
+            set {
+                this.etasjeplanField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="integer", IsNullable=true)]
+        public string antallBoenheter {
+            get {
+                return this.antallBoenheterField;
+            }
+            set {
+                this.antallBoenheterField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<double> bruksarealTilAnnet {
+            get {
+                return this.bruksarealTilAnnetField;
+            }
+            set {
+                this.bruksarealTilAnnetField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool bruksarealTilAnnetSpecified {
+            get {
+                return this.bruksarealTilAnnetFieldSpecified;
+            }
+            set {
+                this.bruksarealTilAnnetFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<double> bruksarealTilBolig {
+            get {
+                return this.bruksarealTilBoligField;
+            }
+            set {
+                this.bruksarealTilBoligField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool bruksarealTilBoligSpecified {
+            get {
+                return this.bruksarealTilBoligFieldSpecified;
+            }
+            set {
+                this.bruksarealTilBoligFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<double> bruksarealTotalt {
+            get {
+                return this.bruksarealTotaltField;
+            }
+            set {
+                this.bruksarealTotaltField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool bruksarealTotaltSpecified {
+            get {
+                return this.bruksarealTotaltFieldSpecified;
+            }
+            set {
+                this.bruksarealTotaltFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<double> bruttoarealTilBolig {
+            get {
+                return this.bruttoarealTilBoligField;
+            }
+            set {
+                this.bruttoarealTilBoligField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool bruttoarealTilBoligSpecified {
+            get {
+                return this.bruttoarealTilBoligFieldSpecified;
+            }
+            set {
+                this.bruttoarealTilBoligFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<double> bruttoarealTotalt {
+            get {
+                return this.bruttoarealTotaltField;
+            }
+            set {
+                this.bruttoarealTotaltField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool bruttoarealTotaltSpecified {
+            get {
+                return this.bruttoarealTotaltFieldSpecified;
+            }
+            set {
+                this.bruttoarealTotaltFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<double> bruttoarealTilAnnet {
+            get {
+                return this.bruttoarealTilAnnetField;
+            }
+            set {
+                this.bruttoarealTilAnnetField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool bruttoarealTilAnnetSpecified {
+            get {
+                return this.bruttoarealTilAnnetFieldSpecified;
+            }
+            set {
+                this.bruttoarealTilAnnetFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public EndringsstatusType endring {
+            get {
+                return this.endringField;
+            }
+            set {
+                this.endringField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
+    [System.Xml.Serialization.XmlRootAttribute("Energiforsyning", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
+    public partial class EnergiforsyningType {
+        
+        private VarmefordelingType[] varmefordelingField;
+        
+        private EnergiforsyningTypeType[] energiforsyningField;
+        
+        private System.Nullable<bool> relevantField;
+        
+        private bool relevantFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("varmefordeling", IsNullable=false)]
+        public VarmefordelingType[] varmefordeling {
+            get {
+                return this.varmefordelingField;
+            }
+            set {
+                this.varmefordelingField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("energiforsyningType", IsNullable=false)]
+        public EnergiforsyningTypeType[] energiforsyning {
+            get {
+                return this.energiforsyningField;
+            }
+            set {
+                this.energiforsyningField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<bool> relevant {
+            get {
+                return this.relevantField;
+            }
+            set {
+                this.relevantField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool relevantSpecified {
+            get {
+                return this.relevantFieldSpecified;
+            }
+            set {
+                this.relevantFieldSpecified = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
+    [System.Xml.Serialization.XmlRootAttribute("Varmefordeling", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
+    public partial class VarmefordelingType {
+        
+        private string kodeField;
+        
+        private string beskrivelseField;
+        
+        /// <remarks/>
+        public string kode {
+            get {
+                return this.kodeField;
+            }
+            set {
+                this.kodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string beskrivelse {
+            get {
+                return this.beskrivelseField;
+            }
+            set {
+                this.beskrivelseField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
+    [System.Xml.Serialization.XmlRootAttribute("EnergiforsyningType", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
+    public partial class EnergiforsyningTypeType {
+        
+        private string kodeField;
+        
+        private string beskrivelseField;
+        
+        /// <remarks/>
+        public string kode {
+            get {
+                return this.kodeField;
+            }
+            set {
+                this.kodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string beskrivelse {
+            get {
+                return this.beskrivelseField;
+            }
+            set {
+                this.beskrivelseField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
+    [System.Xml.Serialization.XmlRootAttribute("Vanntilknytning", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
+    public partial class VanntilknytningType {
         
         private string kodeField;
         

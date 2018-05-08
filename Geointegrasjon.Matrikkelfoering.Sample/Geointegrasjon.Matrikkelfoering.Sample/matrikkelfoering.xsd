@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1" xmlns:mf="http://rep.geointegrasjon.no/Matrikkel/foering/v1" elementFormDefault="qualified">
-  <!-- Generert av MetaTrans(1.1.0.0) - 08.05.2018 07:25:14-->
+  <!-- Generert av MetaTrans(1.1.0.0) - 08.05.2018 13:47:58-->
   <xs:element name="Adresse" type="mf:AdresseType" />
   <xs:complexType name="AdresseListe">
     <xs:sequence>
@@ -23,21 +23,6 @@
       <xs:element name="beskrivelse" type="xs:string" minOccurs="0" maxOccurs="1" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Boligadresse" type="mf:BoligadresseType" />
-  <xs:complexType name="BoligadresseListe">
-    <xs:sequence>
-      <xs:element name="boligadresse" type="mf:BoligadresseType" minOccurs="0" maxOccurs="unbounded" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="BoligadresseType">
-    <xs:sequence>
-      <xs:element name="adressekode" minOccurs="0" maxOccurs="1" nillable="true" type="xs:string" />
-      <xs:element name="adressenavn" minOccurs="0" maxOccurs="1" nillable="true" type="xs:string" />
-      <xs:element name="adressenummer" minOccurs="0" maxOccurs="1" nillable="true" type="xs:string" />
-      <xs:element name="adressebokstav" minOccurs="0" maxOccurs="1" nillable="true" type="xs:string" />
-      <xs:element name="seksjonsnummer" minOccurs="0" maxOccurs="1" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:element name="Bruksenhet" type="mf:BruksenhetType" />
   <xs:complexType name="BruksenhetListe">
     <xs:sequence>
@@ -47,15 +32,15 @@
   <xs:complexType name="BruksenhetType">
     <xs:sequence>
       <xs:element name="bruksenhetsnummer" minOccurs="1" maxOccurs="1" type="mf:BruksenhetsnummerType" />
+      <xs:element name="bruksenhetstype" minOccurs="0" maxOccurs="1" nillable="true" type="mf:BruksenhetstypeKodeType" />
       <xs:element name="bruksareal" minOccurs="0" maxOccurs="1" nillable="true" type="xs:double" />
       <xs:element name="kjoekkentilgang" minOccurs="0" maxOccurs="1" nillable="true" type="mf:KjoekkentilgangKodeType" />
       <xs:element name="antallRom" minOccurs="0" maxOccurs="1" nillable="true" type="xs:integer" />
       <xs:element name="antallBad" minOccurs="0" maxOccurs="1" nillable="true" type="xs:integer" />
       <xs:element name="antallWC" minOccurs="0" maxOccurs="1" nillable="true" type="xs:integer" />
-      <xs:element name="bruksenhetstype" minOccurs="0" maxOccurs="1" nillable="true" type="mf:BruksenhetstypeKodeType" />
-      <xs:element name="adresse" minOccurs="0" maxOccurs="1" nillable="true" type="mf:BoligadresseType" />
-      <xs:element name="endring" minOccurs="1" maxOccurs="1" type="mf:EndringsstatusType" />
+      <xs:element name="adresse" minOccurs="0" maxOccurs="1" nillable="true" type="mf:AdresseType" />
       <xs:element name="matrikkelnummer" minOccurs="0" maxOccurs="1" nillable="true" type="mf:MatrikkelnummerType" />
+      <xs:element name="endring" minOccurs="1" maxOccurs="1" type="mf:EndringsstatusType" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Bruksenhetsnummer" type="mf:BruksenhetsnummerType" />
@@ -86,16 +71,19 @@
   </xs:complexType>
   <xs:complexType name="ByggesakType">
     <xs:sequence>
-      <xs:element name="adresse" minOccurs="0" maxOccurs="1" nillable="true" type="xs:string" />
+      <xs:element name="systemId" minOccurs="0" maxOccurs="1" nillable="true" type="xs:string" />
+      <xs:element name="tittel" minOccurs="1" maxOccurs="1" type="xs:string" />
+      <xs:element name="saksnummer" minOccurs="1" maxOccurs="1" type="mf:SaksnummerType" />
+      <xs:element name="kategori" minOccurs="1" maxOccurs="1" type="mf:ProsesskategoriType" />
+      <xs:element name="tiltakstype" minOccurs="0" maxOccurs="1" nillable="true" type="mf:TiltaktypeListe" />
+      <xs:element name="vedtak" minOccurs="0" maxOccurs="1" nillable="true" type="mf:VedtakType" />
+      <xs:element name="ansvarligSoeker" minOccurs="0" maxOccurs="1" nillable="true" type="mf:PartType" />
+      <xs:element name="tiltakshaver" minOccurs="0" maxOccurs="1" nillable="true" type="mf:PartType" />
       <xs:element name="matrikkelopplysninger" minOccurs="0" maxOccurs="1" nillable="true" type="mf:MatrikkelopplysningerType" />
+      <xs:element name="adresse" minOccurs="0" maxOccurs="1" nillable="true" type="xs:string" />
       <xs:element name="referanseAndreSaker" minOccurs="0" maxOccurs="1" nillable="true" type="mf:SaksnummerListe" />
       <xs:element name="referanseKlagesaker" minOccurs="0" maxOccurs="1" nillable="true" type="mf:SaksnummerListe" />
       <xs:element name="registrertDato" minOccurs="1" maxOccurs="1" type="xs:dateTime" />
-      <xs:element name="saksnummer" minOccurs="1" maxOccurs="1" type="mf:SaksnummerType" />
-      <xs:element name="systemId" minOccurs="0" maxOccurs="1" nillable="true" type="xs:string" />
-      <xs:element name="vedtak" minOccurs="0" maxOccurs="1" nillable="true" type="mf:VedtakType" />
-      <xs:element name="tittel" minOccurs="1" maxOccurs="1" type="xs:string" />
-      <xs:element name="tiltakstype" minOccurs="0" maxOccurs="1" nillable="true" type="mf:TiltaktypeListe" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Bygning" type="mf:BygningType" />
@@ -110,9 +98,9 @@
       <xs:element name="naeringsgruppe" minOccurs="0" maxOccurs="1" nillable="true" type="mf:NaeringsgruppeType" />
       <xs:element name="bygningstype" minOccurs="0" maxOccurs="1" nillable="true" type="mf:BygningstypeType" />
       <xs:element name="bebygdAreal" minOccurs="0" maxOccurs="1" nillable="true" type="xs:double" />
+      <xs:element name="bruksenheter" minOccurs="0" maxOccurs="1" nillable="true" type="mf:BruksenhetListe" />
       <xs:element name="etasjer" minOccurs="0" maxOccurs="1" nillable="true" type="mf:EtasjeListe" />
       <xs:element name="avlop" minOccurs="0" maxOccurs="1" nillable="true" type="mf:AvloepstilknytningType" />
-      <xs:element name="bruksenheter" minOccurs="0" maxOccurs="1" nillable="true" type="mf:BruksenhetListe" />
       <xs:element name="energiforsyning" minOccurs="0" maxOccurs="1" nillable="true" type="mf:EnergiforsyningType" />
       <xs:element name="vannforsyning" minOccurs="0" maxOccurs="1" nillable="true" type="mf:VanntilknytningType" />
       <xs:element name="harHeis" minOccurs="0" maxOccurs="1" nillable="true" type="xs:boolean" />
@@ -163,6 +151,22 @@
       <xs:element name="energiforsyningType" type="mf:EnergiforsyningTypeType" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
+  <xs:element name="EnkelAdresse" type="mf:EnkelAdresseType" />
+  <xs:complexType name="EnkelAdresseListe">
+    <xs:sequence>
+      <xs:element name="enkeladresse" type="mf:EnkelAdresseType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EnkelAdresseType">
+    <xs:sequence>
+      <xs:element name="adresselinje1" minOccurs="0" maxOccurs="1" nillable="true" type="xs:string" />
+      <xs:element name="adresselinje2" minOccurs="0" maxOccurs="1" nillable="true" type="xs:string" />
+      <xs:element name="adresselinje3" minOccurs="0" maxOccurs="1" nillable="true" type="xs:string" />
+      <xs:element name="postnr" minOccurs="0" maxOccurs="1" nillable="true" type="xs:string" />
+      <xs:element name="poststed" minOccurs="1" maxOccurs="1" type="xs:string" />
+      <xs:element name="landkode" minOccurs="0" maxOccurs="1" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:element name="Etasje" type="mf:EtasjeType" />
   <xs:complexType name="EtasjeListe">
     <xs:sequence>
@@ -171,16 +175,16 @@
   </xs:complexType>
   <xs:complexType name="EtasjeType">
     <xs:sequence>
+      <xs:element name="etasjenummer" minOccurs="1" maxOccurs="1" type="xs:integer" />
+      <xs:element name="etasjeplan" minOccurs="1" maxOccurs="1" type="mf:EtasjeplanType" />
       <xs:element name="antallBoenheter" minOccurs="0" maxOccurs="1" nillable="true" type="xs:integer" />
       <xs:element name="bruksarealTilAnnet" minOccurs="0" maxOccurs="1" nillable="true" type="xs:double" />
       <xs:element name="bruksarealTilBolig" minOccurs="0" maxOccurs="1" nillable="true" type="xs:double" />
       <xs:element name="bruksarealTotalt" minOccurs="0" maxOccurs="1" nillable="true" type="xs:double" />
-      <xs:element name="etasjenummer" minOccurs="1" maxOccurs="1" type="xs:integer" />
-      <xs:element name="etasjeplan" minOccurs="1" maxOccurs="1" type="mf:EtasjeplanType" />
       <xs:element name="bruttoarealTilBolig" minOccurs="0" maxOccurs="1" nillable="true" type="xs:double" />
+      <xs:element name="bruttoarealTotalt" minOccurs="0" maxOccurs="1" nillable="true" type="xs:double" />
       <xs:element name="bruttoarealTilAnnet" minOccurs="0" maxOccurs="1" nillable="true" type="xs:double" />
       <xs:element name="endring" minOccurs="1" maxOccurs="1" type="mf:EndringsstatusType" />
-      <xs:element name="bruttoarealTotalt" minOccurs="0" maxOccurs="1" nillable="true" type="xs:double" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Etasjeplan" type="mf:EtasjeplanType" />
@@ -211,6 +215,38 @@
       <xs:element name="oppdatertDato" minOccurs="0" maxOccurs="1" nillable="true" type="xs:dateTime" />
     </xs:sequence>
   </xs:complexType>
+  <xs:element name="Part" type="mf:PartType" />
+  <xs:complexType name="PartListe">
+    <xs:sequence>
+      <xs:element name="part" type="mf:PartType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartType">
+    <xs:sequence>
+      <xs:element name="partstype" minOccurs="1" maxOccurs="1" type="mf:PartstypeType" />
+      <xs:element name="foedselsnummer" minOccurs="0" maxOccurs="1" nillable="true" type="xs:string" />
+      <xs:element name="organisasjonsnummer" minOccurs="0" maxOccurs="1" nillable="true" type="xs:string" />
+      <xs:element name="navn" minOccurs="1" maxOccurs="1" type="xs:string" />
+      <xs:element name="adresse" minOccurs="0" maxOccurs="1" nillable="true" type="mf:EnkelAdresseType" />
+      <xs:element name="telefonnummer" minOccurs="0" maxOccurs="1" nillable="true" type="xs:string" />
+      <xs:element name="mobilnummer" minOccurs="0" maxOccurs="1" nillable="true" type="xs:string" />
+      <xs:element name="epost" minOccurs="0" maxOccurs="1" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Partstype" type="mf:PartstypeType" />
+  <xs:complexType name="PartstypeType">
+    <xs:sequence>
+      <xs:element name="kode" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="beskrivelse" type="xs:string" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Prosesskategori" type="mf:ProsesskategoriType" />
+  <xs:complexType name="ProsesskategoriType">
+    <xs:sequence>
+      <xs:element name="kode" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="beskrivelse" type="xs:string" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:element name="Saksnummer" type="mf:SaksnummerType" />
   <xs:complexType name="SaksnummerListe">
     <xs:sequence>
@@ -235,6 +271,7 @@
       <xs:element name="tiltaktype" type="mf:TiltaktypeType" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
+  
   <xs:element name="Vanntilknytning" type="mf:VanntilknytningType" />
   <xs:complexType name="VanntilknytningType">
     <xs:sequence>
@@ -312,5 +349,5 @@
       <xs:enumeration value="Fjernet" />
     </xs:restriction>
   </xs:simpleType>
- 
+  
 </xs:schema>
