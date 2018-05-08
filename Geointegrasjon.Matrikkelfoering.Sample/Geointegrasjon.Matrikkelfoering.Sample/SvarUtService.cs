@@ -14,17 +14,22 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
 
         public void Send(ByggesakType byggesak, string sendToOrganizationNumber, string sendToName, dokument[] dokumenter)
         {
+            noarkMetadataForImport metadataForImport = null;
+            if (byggesak.saksnummer != null)
+            {
+                metadataForImport = new noarkMetadataForImport
+                {
+                    saksaar = Convert.ToInt32(byggesak.saksnummer.saksaar),
+                    sakssekvensnummer = Convert.ToInt32(byggesak.saksnummer.saksaar),
+                    journalposttype = "I"
+                };
+            }
 
             forsendelse forsendelse = new forsendelse
             {
                 avgivendeSystem = "Saksbehandlingssystem",
                 eksternref = byggesak.systemId,
-                metadataForImport = new noarkMetadataForImport
-                {
-                    saksaar = 2018,
-                    sakssekvensnummer = 12345,
-                    journalposttype = "I"
-                },
+                metadataForImport = metadataForImport,
                 forsendelseType = "Geointegrasjon.Matrikkelføring",
                 mottaker = new adresse()
                 {
