@@ -44,6 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenerateN4.cs" />
+    <Compile Include="GenerateN3.cs" />
+    <Compile Include="GenerateN2.cs" />
+    <Compile Include="GenerateN1.cs" />
     <Compile Include="matrikkelfoering.cs">
       <DependentUpon>matrikkelfoering.xsd</DependentUpon>
     </Compile>
