@@ -2,6 +2,7 @@
 using no.geointegrasjon.rep.matrikkelfoering;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -52,9 +53,7 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
 
             //Opplasting FIKS
             var svarut = new SvarUtService();
-            string orgnrTilKommunen = "910297937"; //Mottakssystem for Arkitektum test
-            //orgnrTilKommunen = "910230557"; //Mottakssystem for NOIS test 
-            //orgnrTilKommunen = "910230549"; //Mottakssystem for Norkart test
+            string orgnrTilKommunen = ConfigurationManager.AppSettings["OrgNrReceiver"];
             svarut.Send(byggesak, orgnrTilKommunen, "Matrikkelføring klient", dokumenter.ToArray());
 
         }
