@@ -68,7 +68,7 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
 
             //Opplasting FIKS
             var svarut = new SvarUtService();
-            string orgnrTilKommunen = "123456789";
+            string orgnrTilKommunen = "910297937"; //Mottakssystem for Arkitektum
             svarut.Send(byggesak, orgnrTilKommunen, "Matrikkelføring klient", dokumenter.ToArray());
 
         }
