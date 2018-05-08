@@ -8,5 +8,6 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
 {
     class GenerateN2
     {
+        // Lars
     }
 }

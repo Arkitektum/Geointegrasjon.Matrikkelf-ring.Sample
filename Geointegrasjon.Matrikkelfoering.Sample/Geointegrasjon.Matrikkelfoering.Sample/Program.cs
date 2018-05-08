@@ -53,8 +53,8 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
             //Opplasting FIKS
             var svarut = new SvarUtService();
             string orgnrTilKommunen = "910297937"; //Mottakssystem for Arkitektum test
-            orgnrTilKommunen = "910230557"; //Mottakssystem for NOIS test 
-            orgnrTilKommunen = "910230549"; //Mottakssystem for Norkart test
+            //orgnrTilKommunen = "910230557"; //Mottakssystem for NOIS test 
+            //orgnrTilKommunen = "910230549"; //Mottakssystem for Norkart test
             svarut.Send(byggesak, orgnrTilKommunen, "Matrikkelføring klient", dokumenter.ToArray());
 
         }
