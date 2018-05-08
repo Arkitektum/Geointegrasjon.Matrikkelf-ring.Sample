@@ -1,4 +1,5 @@
-﻿using no.geointegrasjon.rep.matrikkelfoering;
+﻿using KommIT.FIKS.AdapterAltinnSvarUt.Services.WS.SvarUt.Forsendelse8;
+using no.geointegrasjon.rep.matrikkelfoering;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -39,14 +40,34 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
             string xml = stringWriter.ToString();
 
 
-            //TODO Prossesskategori
-            //TODO tiltakshaver, ansvarlig søker - Kontaktperson
+       
 
-            //Vedleggstyper - Situasjonsplan, 
+
+            //*** Vedleggstyper
+            // Situasjonsplan, Avkjoerselsplan, 
+            // TegningEksisterendePlan, TegningNyPlan, TegningEksisterendeSnitt, TegningNyttSnitt, TegningEksisterendeFasade, TegningNyFasade
+            // ByggesaksBIM
+            // Vedtak
+            // - se beskrivelse https://dibk-utvikling.atlassian.net/wiki/spaces/FB/pages/270139400/Vedlegg
+
+            dokument byggesakxml = new dokument() { dokumentType = "Byggesak", data = System.Text.Encoding.UTF8.GetBytes(xml), filnavn = "byggesak.xml", mimetype = "application/xml" };
+
+            dokument sitplan = new dokument() { dokumentType = "Situasjonsplan", data = new byte[1], filnavn = "sitplan.pdf", mimetype = "application/pdf" };
+            dokument tegning1 = new dokument() { dokumentType = "TegningNyttSnitt", data = new byte[1], filnavn = "tegning.pdf", mimetype = "application/pdf" };
+
+            dokument bim = new dokument() { dokumentType = "ByggesaksBIM", data = new byte[1], filnavn = "bim.ifc", mimetype = "application/ifc" };
+
+
+            List<dokument> dokumenter = new List<dokument>();
+            dokumenter.Add(byggesakxml);
+            dokumenter.Add(sitplan);
+            dokumenter.Add(tegning1);
+            dokumenter.Add(bim);
 
             //Opplasting FIKS
             var svarut = new SvarUtService();
-            svarut.Send(byggesak, "123456789", "Matrikkelføring klient");
+            string orgnrTilKommunen = "123456789";
+            svarut.Send(byggesak, orgnrTilKommunen, "Matrikkelføring klient", dokumenter.ToArray());
 
         }
     }

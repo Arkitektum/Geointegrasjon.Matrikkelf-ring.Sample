@@ -11,7 +11,7 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
     public class SvarUtService
     {
 
-       public void Send(ByggesakType byggesak, string sendToOrganizationNumber, string sendToName)
+       public void Send(ByggesakType byggesak, string sendToOrganizationNumber, string sendToName, dokument[] dokumenter)
         {
 
             forsendelse forsendelse = new forsendelse
@@ -47,7 +47,7 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
                 },
                 kunDigitalLevering = true,
                 tittel = byggesak.tittel,
-                //dokumenter = 
+                dokumenter = dokumenter
             };
 
             //TODO send forsendelse to svarut
