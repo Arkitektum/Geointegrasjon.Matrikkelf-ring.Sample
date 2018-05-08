@@ -19,16 +19,10 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
             {
                 avgivendeSystem = "Saksbehandlingssystem",
                 eksternref = byggesak.systemId,
-
-                metadataFraAvleverendeSystem = new noarkMetadataFraAvleverendeSakssystem
-                {
-                    tittel = byggesak.tittel
-                },
                 metadataForImport = new noarkMetadataForImport
                 {
                     saksaar = 2018,
                     sakssekvensnummer = 12345,
-                    tittel = byggesak.tittel,
                     journalposttype = "I"
                 },
                 forsendelseType = "Geointegrasjon.Matrikkelføring",
