@@ -54,7 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="LocalSettings.config" />
+    <None Include="LocalSettings.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="LocalSettings.default.config" />
     <None Include="matrikkelfoering.xsd">
       <SubType>Designer</SubType>
