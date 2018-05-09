@@ -7,12 +7,20 @@ using no.geointegrasjon.rep.matrikkelfoering;
 
 namespace Geointegrasjon.Matrikkelfoering.Sample
 {
+    /// <summary>
+    /// Eksempler på Nivå 0 forsendelser fra eByggesak til Matrikkelføring
+    /// Det refereres til aktuelle Brukstilfeller matrikkel se https://www.test.matrikkel.no:7004/matrikkel/docs/SamlaSystemspesifikasjonVer.3.12.pdf
+    /// </summary>
     class GenerateN0
     {
+        /// <summary>
+        ///Nivå 0 - kun beskjed om godkjent vedtak på rammesøknad med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
+        ///Brukstilfelle matrikkel - 8.6.1 Nybygg, nytt bygg - rammetillatelse gitt
+        ///Søknaden må etterfølges med minst en igangsettingssøknad
+        /// </summary>
+        /// <returns></returns>
         public ByggesakType GenerateSample()
         {
-
-            //Nivå 0 - kun beskjed om godkjent vedtak på rammesøknad med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
             var byggesak = new ByggesakType();
             byggesak.adresse = "Byggestedgate 1";
             byggesak.tittel = "Rammesøknad for enebolig i Byggestedgate 1";
@@ -25,10 +33,14 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
             return byggesak;
         }
 
+        /// <summary>
+        ///Nivå 0 - kun beskjed om godkjent vedtak på endringssøknad med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
+        ///Endringssøknad kan komme i alle stadier etter den initielle søknaden (feks ramme, ett trinn eller tiltak uten ansvarsrett)
+        ///Brukstilfelle matrikkel - 8.6.12 Endre bygningsdata
+        /// </summary>
+        /// <returns></returns>
         public ByggesakType GenerateSample1()
         {
-
-            //Nivå 0 - kun beskjed om godkjent vedtak på endringssøknad med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
             var byggesak = new ByggesakType();
             byggesak.adresse = "Byggestedgate 1";
             byggesak.tittel = "Endringssøknad for enebolig i Byggestedgate 1";
@@ -42,10 +54,13 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
         }
 
 
+        /// <summary>
+        ///Nivå 0 - kun beskjed om godkjent vedtak på igangsettingsøknad med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
+        ///Brukstilfelle matrikkel - 8.6.2 Nybygg, nytt bygg - igangsettingstillatelse gitt
+        /// </summary>
+        /// <returns></returns>
         public ByggesakType GenerateSample2()
         {
-
-            //Nivå 0 - kun beskjed om godkjent vedtak på igangsettingsøknad med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
             var byggesak = new ByggesakType();
             byggesak.adresse = "Byggestedgate 1";
             byggesak.tittel = "Igangsettingssøknad for enebolig i Byggestedgate 1 - byggetrinn 1";
@@ -54,14 +69,16 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
             byggesak.tiltakstype = new[] { new TiltaktypeType() { kode = "nyttbyggboligformal", beskrivelse = "Nytt bygg - boligformål" } };
             byggesak.vedtak = new VedtakType() { beskrivelse = "Vedtak om igangsettingstillatelse av byggetrinn 1", status = new VedtakstypeType() { kode = "1", beskrivelse = "Godkjent" }, vedtaksdato = DateTime.Now };
 
-
             return byggesak;
         }
 
+        /// <summary>
+        ///Nivå 0 - kun beskjed om godkjent vedtak på igangsettingsøknad med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
+        ///Brukstilfelle matrikkel - 8.6.2 Nybygg, nytt bygg - igangsettingstillatelse gitt
+        /// </summary>
+        /// <returns></returns>
         public ByggesakType GenerateSample3()
         {
-
-            //Nivå 0 - kun beskjed om godkjent vedtak på igangsettingsøknad med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
             var byggesak = new ByggesakType();
             byggesak.adresse = "Byggestedgate 1";
             byggesak.tittel = "Igangsettingssøknad for enebolig i Byggestedgate 1 - byggetrinn 2";
@@ -74,10 +91,13 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
             return byggesak;
         }
 
+        /// <summary>
+        ///Nivå 0 - kun beskjed om godkjent vedtak på midlertidig brukstillatelse med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
+        ///Brukstilfelle matrikkel - 8.6.4 Nybygg, eksisterende bygg – midlertidig brukstillatelse gitt
+        /// </summary>
+        /// <returns></returns>
         public ByggesakType GenerateSample4()
         {
-
-            //Nivå 0 - kun beskjed om godkjent vedtak på midlertidig brukstillatelse med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
             var byggesak = new ByggesakType();
             byggesak.adresse = "Byggestedgate 1";
             byggesak.tittel = "Midlertidig brukstillatelse for enebolig i Byggestedgate 1";
@@ -86,14 +106,16 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
             byggesak.tiltakstype = new[] { new TiltaktypeType() { kode = "nyttbyggboligformal", beskrivelse = "Nytt bygg - boligformål" } };
             byggesak.vedtak = new VedtakType() { beskrivelse = "Vedtak om midlertidig brukstillatelse", status = new VedtakstypeType() { kode = "1", beskrivelse = "Godkjent" }, vedtaksdato = DateTime.Now };
 
-
             return byggesak;
         }
 
+        /// <summary>
+        ///Nivå 0 - kun beskjed om godkjent vedtak på ferdigattest med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
+        ///Brukstilfelle matrikkel - 8.6.5 Nybygg, eksisterende bygg – ferdigattest gitt
+        /// </summary>
+        /// <returns></returns>
         public ByggesakType GenerateSample5()
         {
-
-            //Nivå 0 - kun beskjed om godkjent vedtak på ferdigattest med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
             var byggesak = new ByggesakType();
             byggesak.adresse = "Byggestedgate 1";
             byggesak.tittel = "Ferdigattest for enebolig i Byggestedgate 1";
@@ -102,6 +124,47 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
             byggesak.tiltakstype = new[] { new TiltaktypeType() { kode = "nyttbyggboligformal", beskrivelse = "Nytt bygg - boligformål" } };
             byggesak.vedtak = new VedtakType() { beskrivelse = "Vedtak om ferdigattest", status = new VedtakstypeType() { kode = "1", beskrivelse = "Godkjent" }, vedtaksdato = DateTime.Now };
 
+
+            return byggesak;
+        }
+
+        //******************************************
+
+
+        /// <summary>
+        ///Nivå 0 - kun beskjed om godkjent vedtak på ett trinn søknad med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
+        ///Brukstilfelle matrikkel - 8.6.2 Nybygg, nytt bygg - igangsettingstillatelse gitt  (denne brukes for ett trinn)
+        ///Søknaden kan etterfølges med endringssøknad, midlertidig brukstillatelse eller ferdigattest
+        /// </summary>
+        /// <returns></returns>
+        public ByggesakType GenerateSample6()
+        {
+            var byggesak = new ByggesakType();
+            byggesak.adresse = "Byggestedgate 1";
+            byggesak.tittel = "Ett trinn søknad for enebolig i Byggestedgate 1";
+            byggesak.saksnummer = new SaksnummerType() { saksaar = "2018", sakssekvensnummer = "123456" };
+            byggesak.kategori = new ProsesskategoriType() { kode = "ET", beskrivelse = "Søknad om tillatelse i ett trinn" };
+            byggesak.tiltakstype = new[] { new TiltaktypeType() { kode = "nyttbyggboligformal", beskrivelse = "Nytt bygg - boligformål" } };
+            byggesak.vedtak = new VedtakType() { beskrivelse = "Vedtak om byggetillatelse", status = new VedtakstypeType() { kode = "1", beskrivelse = "Godkjent" }, vedtaksdato = DateTime.Now };
+
+            return byggesak;
+        }
+
+        /// <summary>
+        ///Nivå 0 - kun beskjed om godkjent vedtak på tiltak uten ansvarsrett søknad med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
+        ///Brukstilfelle matrikkel - 8.6.2 Nybygg, nytt bygg - igangsettingstillatelse gitt  (denne brukes for tiltak uten ansvarsrett)
+        ///Søknaden kan etterfølges med endringssøknad, midlertidig brukstillatelse eller ferdigattest
+        /// </summary>
+        /// <returns></returns>
+        public ByggesakType GenerateSample7()
+        {
+            var byggesak = new ByggesakType();
+            byggesak.adresse = "Byggestedgate 1";
+            byggesak.tittel = "Søknad om tiltak uten ansvarsrett for enebolig i Byggestedgate 1";
+            byggesak.saksnummer = new SaksnummerType() { saksaar = "2018", sakssekvensnummer = "123456" };
+            byggesak.kategori = new ProsesskategoriType() { kode = "TA", beskrivelse = "Søknad om tiltak uten ansvarsrett" };
+            byggesak.tiltakstype = new[] { new TiltaktypeType() { kode = "nyttbyggboligformal", beskrivelse = "Nytt bygg - boligformål" } };
+            byggesak.vedtak = new VedtakType() { beskrivelse = "Vedtak om byggetillatelse", status = new VedtakstypeType() { kode = "1", beskrivelse = "Godkjent" }, vedtaksdato = DateTime.Now };
 
             return byggesak;
         }
