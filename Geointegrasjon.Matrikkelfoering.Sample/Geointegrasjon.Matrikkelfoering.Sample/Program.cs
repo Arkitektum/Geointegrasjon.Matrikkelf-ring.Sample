@@ -53,6 +53,15 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
             // Ferdigattest
             byggesakG0 = new GenerateN0().GenerateSample5();
             SendByggesakToSvarut(byggesakG0, dokumenter);
+
+            // Ett trinn
+            byggesakG0 = new GenerateN0().GenerateSample6();
+            SendByggesakToSvarut(byggesakG0, dokumenter);
+
+            // Tiltak uten ansvarsrett
+            byggesakG0 = new GenerateN0().GenerateSample7();
+            SendByggesakToSvarut(byggesakG0, dokumenter);
+
             Console.WriteLine("Sendte melding med nivå 0, Saksnummer/url på vedtak");
 
             //
