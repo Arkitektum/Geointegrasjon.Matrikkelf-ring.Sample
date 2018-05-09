@@ -19,12 +19,12 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
         static void Main(string[] args)
         {
             //Datamodell matrikkelføring
-            var byggesakG1 = new GenerateN1().GenerateSample();
+            var byggesakG0 = new GenerateN0().GenerateSample();
             List<dokument> dokumenter = new List<dokument>();
 
-            var serializer = new System.Xml.Serialization.XmlSerializer(byggesakG1.GetType());
+            var serializer = new System.Xml.Serialization.XmlSerializer(byggesakG0.GetType());
             var stringWriter = new Utf8StringWriter();
-            serializer.Serialize(stringWriter, byggesakG1);
+            serializer.Serialize(stringWriter, byggesakG0);
             string xml = stringWriter.ToString();
             dokument byggesakxml = new dokument()
             {
@@ -36,10 +36,13 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
             dokumenter.Add(byggesakxml);
 
 
+            // G0: Saksnummer / url på vedtak
+            SendByggesakToSvarut(byggesakG0, dokumenter);
+
             // G1
+            var byggesakG1 = new GenerateN0().GenerateSample();
             var tegning1 = GetDokTegninger();
             dokumenter.Add(tegning1);
-            SendByggesakToSvarut(byggesakG1, dokumenter);
 
             // G2
             // TODO: Add Matrikkelopplysninger

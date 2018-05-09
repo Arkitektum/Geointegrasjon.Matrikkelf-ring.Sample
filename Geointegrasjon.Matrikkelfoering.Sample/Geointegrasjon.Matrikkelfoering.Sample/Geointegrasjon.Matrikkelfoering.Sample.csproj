@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenerateN0.cs" />
     <Compile Include="GenerateN4.cs" />
     <Compile Include="GenerateN3.cs" />
     <Compile Include="GenerateN2.cs" />
