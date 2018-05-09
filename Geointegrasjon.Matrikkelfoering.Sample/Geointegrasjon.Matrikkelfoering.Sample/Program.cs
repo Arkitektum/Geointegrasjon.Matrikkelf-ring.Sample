@@ -22,10 +22,7 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
             var byggesakG0 = new GenerateN0().GenerateSample();
             List<dokument> dokumenter = new List<dokument>();
 
-            var serializer = new System.Xml.Serialization.XmlSerializer(byggesakG0.GetType());
-            var stringWriter = new Utf8StringWriter();
-            serializer.Serialize(stringWriter, byggesakG0);
-            string xml = stringWriter.ToString();
+            string xml = writeByggesakXML(byggesakG0);
             dokument byggesakxml = new dokument()
             {
                 dokumentType = "Byggesak",
@@ -48,7 +45,7 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
             // TODO: Add Matrikkelopplysninger
             var byggesakG2 = new GenerateN2().GenerateSample();
             SendByggesakToSvarut(byggesakG2, dokumenter);
-            
+
             // G3
             var bim = GetDokByggesaksBim();
             dokumenter.Add(bim);
@@ -56,6 +53,15 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
             // G4
             var sitplan = GetDokSituasjonsPlan();
             dokumenter.Add(sitplan);
+        }
+
+        private static string writeByggesakXML(ByggesakType byggesakG0)
+        {
+            var serializer = new System.Xml.Serialization.XmlSerializer(byggesakG0.GetType());
+            var stringWriter = new Utf8StringWriter();
+            serializer.Serialize(stringWriter, byggesakG0);
+            string xml = stringWriter.ToString();
+            return xml;
         }
 
         private static void SendByggesakToSvarut(ByggesakType byggesak, List<dokument> dokumenter)
