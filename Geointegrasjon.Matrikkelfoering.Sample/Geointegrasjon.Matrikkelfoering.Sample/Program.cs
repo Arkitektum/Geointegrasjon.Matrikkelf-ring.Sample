@@ -32,25 +32,52 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
             };
             dokumenter.Add(byggesakxml);
 
+            //
             // G0: Saksnummer / url på vedtak
+            //
+
+            //Rammesøknad
+            SendByggesakToSvarut(byggesakG0, dokumenter);
+            // Endringssøknad
+            byggesakG0 = new GenerateN0().GenerateSample1();
+            SendByggesakToSvarut(byggesakG0, dokumenter);
+            // Igangsettingssøknad  av byggetrinn 1
+            byggesakG0 = new GenerateN0().GenerateSample2();
+            SendByggesakToSvarut(byggesakG0, dokumenter);
+            // Igangsettingssøknad  av byggetrinn 2
+            byggesakG0 = new GenerateN0().GenerateSample3();
+            SendByggesakToSvarut(byggesakG0, dokumenter);
+            // Midlertidig brukstillatelse
+            byggesakG0 = new GenerateN0().GenerateSample4();
+            SendByggesakToSvarut(byggesakG0, dokumenter);
+            // Ferdigattest
+            byggesakG0 = new GenerateN0().GenerateSample5();
             SendByggesakToSvarut(byggesakG0, dokumenter);
 
+            //
             // G1: Gjeldende tegninger
+            //
             var byggesakG1 = new GenerateN0().GenerateSample();
             var tegning1 = GetDokTegninger();
             dokumenter.Add(tegning1);
             SendByggesakToSvarut(byggesakG1, dokumenter);
 
-            // G2
+            //
+            // G2: Matrikkelopplysninger
+            //
             // TODO: Add Matrikkelopplysninger
             var byggesakG2 = new GenerateN2().GenerateSample();
             SendByggesakToSvarut(byggesakG2, dokumenter);
 
-            // G3
+            //
+            // G3: ByggesaksBIM
+            //
             var bim = GetDokByggesaksBim();
             dokumenter.Add(bim);
 
-            // G4
+            //
+            // G4: digital situasjonsplan
+            //
             var sitplan = GetDokSituasjonsPlan();
             dokumenter.Add(sitplan);
         }
