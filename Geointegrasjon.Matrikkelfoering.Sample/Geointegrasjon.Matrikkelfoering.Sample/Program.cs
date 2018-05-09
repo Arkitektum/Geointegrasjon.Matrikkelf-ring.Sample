@@ -57,7 +57,7 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
             //
             // G1: Gjeldende tegninger
             //
-            var byggesakG1 = new GenerateN0().GenerateSample();
+            var byggesakG1 = new GenerateN1().GenerateSample();
             var tegning1 = GetDokTegninger();
             dokumenter.Add(tegning1);
             SendByggesakToSvarut(byggesakG1, dokumenter);
