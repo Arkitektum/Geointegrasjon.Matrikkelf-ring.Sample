@@ -11,6 +11,10 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
 {
     public class SvarUtService
     {
+        /// <summary>
+        /// Forsendelsetypen som mottakstjenester i FIKS filterer meldinger på for å hente matrikkelføringsbeskjeder.
+        /// </summary>
+        private const string ForsendelsesTypeGeointegrasjonMatrikkel = "Geointegrasjon.Matrikkelføring";
 
         public void Send(ByggesakType byggesak, string sendToOrganizationNumber, string sendToName, dokument[] dokumenter)
         {
@@ -31,7 +35,7 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
                     tittel = byggesak.tittel,
                     journalposttype = "I"
                 },
-                forsendelseType = "Geointegrasjon.Matrikkelføring",
+                forsendelseType = ForsendelsesTypeGeointegrasjonMatrikkel,
                 mottaker = new adresse()
                 {
                     digitalAdresse = new organisasjonDigitalAdresse()
