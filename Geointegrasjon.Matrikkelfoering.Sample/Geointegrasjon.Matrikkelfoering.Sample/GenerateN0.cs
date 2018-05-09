@@ -17,6 +17,7 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
         ///Nivå 0 - kun beskjed om godkjent vedtak på rammesøknad med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
         ///Brukstilfelle matrikkel - 8.6.1 Nybygg, nytt bygg - rammetillatelse gitt
         ///Søknaden må etterfølges med minst en igangsettingssøknad
+        ///Mer om søknaden - https://dibk-utvikling.atlassian.net/wiki/spaces/FB/pages/31129620/S+knad+om+rammetillatelse
         /// </summary>
         /// <returns></returns>
         public ByggesakType GenerateSample()
@@ -37,6 +38,7 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
         ///Nivå 0 - kun beskjed om godkjent vedtak på endringssøknad med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
         ///Endringssøknad kan komme i alle stadier etter den initielle søknaden (feks ramme, ett trinn eller tiltak uten ansvarsrett)
         ///Brukstilfelle matrikkel - 8.6.12 Endre bygningsdata
+        ///Mer om søknaden - https://dibk-utvikling.atlassian.net/wiki/spaces/FB/pages/133365793/S+knad+om+endring+av+gitt+tillatelse
         /// </summary>
         /// <returns></returns>
         public ByggesakType GenerateSample1()
@@ -57,6 +59,7 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
         /// <summary>
         ///Nivå 0 - kun beskjed om godkjent vedtak på igangsettingsøknad med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
         ///Brukstilfelle matrikkel - 8.6.2 Nybygg, nytt bygg - igangsettingstillatelse gitt
+        ///Mer om søknaden - https://dibk-utvikling.atlassian.net/wiki/spaces/FB/pages/20021280/S+knad+om+igangsettingstillatelse
         /// </summary>
         /// <returns></returns>
         public ByggesakType GenerateSample2()
@@ -75,6 +78,7 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
         /// <summary>
         ///Nivå 0 - kun beskjed om godkjent vedtak på igangsettingsøknad med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
         ///Brukstilfelle matrikkel - 8.6.2 Nybygg, nytt bygg - igangsettingstillatelse gitt
+        ///Mer om søknaden - https://dibk-utvikling.atlassian.net/wiki/spaces/FB/pages/20021280/S+knad+om+igangsettingstillatelse
         /// </summary>
         /// <returns></returns>
         public ByggesakType GenerateSample3()
@@ -94,6 +98,7 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
         /// <summary>
         ///Nivå 0 - kun beskjed om godkjent vedtak på midlertidig brukstillatelse med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
         ///Brukstilfelle matrikkel - 8.6.4 Nybygg, eksisterende bygg – midlertidig brukstillatelse gitt
+        ///Mer om søknaden - https://dibk-utvikling.atlassian.net/wiki/spaces/FB/pages/20021282/S+knad+om+midlertidig+brukstillatelse
         /// </summary>
         /// <returns></returns>
         public ByggesakType GenerateSample4()
@@ -112,6 +117,7 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
         /// <summary>
         ///Nivå 0 - kun beskjed om godkjent vedtak på ferdigattest med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
         ///Brukstilfelle matrikkel - 8.6.5 Nybygg, eksisterende bygg – ferdigattest gitt
+        ///Mer om søknaden - https://dibk-utvikling.atlassian.net/wiki/spaces/FB/pages/23691266/S+knad+om+ferdigattest
         /// </summary>
         /// <returns></returns>
         public ByggesakType GenerateSample5()
@@ -135,6 +141,7 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
         ///Nivå 0 - kun beskjed om godkjent vedtak på ett trinn søknad med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
         ///Brukstilfelle matrikkel - 8.6.2 Nybygg, nytt bygg - igangsettingstillatelse gitt  (denne brukes for ett trinn)
         ///Søknaden kan etterfølges med endringssøknad, midlertidig brukstillatelse eller ferdigattest
+        ///Mer om søknaden - https://dibk-utvikling.atlassian.net/wiki/spaces/FB/pages/31129622/S+knad+om+tillatelse+i+ett+trinn
         /// </summary>
         /// <returns></returns>
         public ByggesakType GenerateSample6()
@@ -154,6 +161,7 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
         ///Nivå 0 - kun beskjed om godkjent vedtak på tiltak uten ansvarsrett søknad med saksnummer - matrikkelfører må selv finne korrekt underlag i saken
         ///Brukstilfelle matrikkel - 8.6.2 Nybygg, nytt bygg - igangsettingstillatelse gitt  (denne brukes for tiltak uten ansvarsrett)
         ///Søknaden kan etterfølges med endringssøknad, midlertidig brukstillatelse eller ferdigattest
+        ///Mer om søknaden - https://dibk-utvikling.atlassian.net/wiki/spaces/FB/pages/31129618/S+knad+om+tillatelse+til+tiltak+uten+ansvarsrett
         /// </summary>
         /// <returns></returns>
         public ByggesakType GenerateSample7()

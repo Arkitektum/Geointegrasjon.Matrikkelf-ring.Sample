@@ -62,7 +62,7 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
             byggesakG0 = new GenerateN0().GenerateSample7();
             SendByggesakToSvarut(byggesakG0, dokumenter);
 
-            Console.WriteLine("Sendte melding med nivå 0, Saksnummer/url på vedtak");
+            Console.WriteLine("Sendte 7 meldinger med nivå 0, Saksnummer på vedtak");
 
             //
             // G1: Gjeldende tegninger
@@ -94,6 +94,8 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
             var sitplan = GetDokSituasjonsPlan();
             dokumenter.Add(sitplan);
             //Console.WriteLine("Sendte melding med nivå 4, med situasjonsplan");
+
+            Console.WriteLine("pause");
         }
 
         private static string writeByggesakXML(ByggesakType byggesakG0)
