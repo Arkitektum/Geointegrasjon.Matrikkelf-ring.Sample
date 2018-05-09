@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 
-namespace Geointegrasjon.Matrikkelfoering.Sample
+namespace Geointegrasjon.Matrikkelfoering.SendSample
 {
     public class SvarUtService
     {

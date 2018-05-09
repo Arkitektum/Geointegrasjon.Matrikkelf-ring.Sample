@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using no.geointegrasjon.rep.matrikkelfoering;
 
-namespace Geointegrasjon.Matrikkelfoering.Sample
+namespace Geointegrasjon.Matrikkelfoering.SendSample
 {
     class GenerateN0
     {

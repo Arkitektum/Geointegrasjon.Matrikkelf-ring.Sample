@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Geointegrasjon.Matrikkelfoering.Sample
+namespace Geointegrasjon.Matrikkelfoering.SendSample
 {
     public sealed class Utf8StringWriter : StringWriter
     {
