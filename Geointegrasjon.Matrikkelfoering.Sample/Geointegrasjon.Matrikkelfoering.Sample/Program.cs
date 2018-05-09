@@ -35,14 +35,14 @@ namespace Geointegrasjon.Matrikkelfoering.Sample
             };
             dokumenter.Add(byggesakxml);
 
-
             // G0: Saksnummer / url på vedtak
             SendByggesakToSvarut(byggesakG0, dokumenter);
 
-            // G1
+            // G1: Gjeldende tegninger
             var byggesakG1 = new GenerateN0().GenerateSample();
             var tegning1 = GetDokTegninger();
             dokumenter.Add(tegning1);
+            SendByggesakToSvarut(byggesakG1, dokumenter);
 
             // G2
             // TODO: Add Matrikkelopplysninger
