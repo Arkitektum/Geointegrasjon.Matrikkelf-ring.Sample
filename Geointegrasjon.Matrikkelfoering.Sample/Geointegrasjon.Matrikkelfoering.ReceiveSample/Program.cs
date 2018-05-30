@@ -8,6 +8,9 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography.Pkcs;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Geointegrasjon.Matrikkelfoering.ReceiveSample
 {
@@ -45,6 +48,7 @@ namespace Geointegrasjon.Matrikkelfoering.ReceiveSample
         /// JSON man POSTer for å si ifra om at man ikke kan håndtere en melding som er kommet inn fordi den ikke er Geointegrasjon.Matrikkelføring
         /// </summary>
         private const string ErrorReceiptMessage = "{ \"feilmelding\":\"Kan ikke håndtere forsendelsestypen.\", \"permanent\":true}";
+        
 
         static void Main()
         {
@@ -52,7 +56,7 @@ namespace Geointegrasjon.Matrikkelfoering.ReceiveSample
         }
 
         static async Task RunProgram()
-        { 
+        {   
             HttpClient client = CreateClient();
             //Fetch list of waiting messages
             HttpResponseMessage response = await client.GetAsync(UrlHentNyeForsendelser);
@@ -92,15 +96,19 @@ namespace Geointegrasjon.Matrikkelfoering.ReceiveSample
                 Console.WriteLine("Melding er av riktig forsendelsestype.");
 
                 //If OK, download files (Always a zip in our example, can be PDF)
-                using (FileStream stream = new FileStream("forsendelse_" + id, FileMode.Create))
-                {
-                    HttpResponseMessage fileResponse = await client.GetAsync(downloadUrl);
-                    await fileResponse.Content.CopyToAsync(stream);
-                }
 
-                //TODO: Decrypt with certificate (also add to instructions about generating and uploading cert)
+                
+                HttpResponseMessage fileResponse = await client.GetAsync(downloadUrl);
 
-                Console.WriteLine("Melding er lastet ned.");
+                //Note that this only works for files that will fit into memory, so be careful with big BIMs
+                byte[] filecontent = await fileResponse.Content.ReadAsByteArrayAsync();
+                EnvelopedCms cmsData = new EnvelopedCms();
+                cmsData.Decode(filecontent);
+                //Remember to import the key as detailed in the readme
+                cmsData.Decrypt();
+                File.WriteAllBytes("forsendelse_" + id + ".zip", cmsData.ContentInfo.Content);
+                
+                Console.WriteLine("Melding er lastet ned og dekryptert.");
 
                 //Send receipt that message was handled
                 //TODO: commented out right now for the sake of testing without having to push new meassages
@@ -137,5 +145,6 @@ namespace Geointegrasjon.Matrikkelfoering.ReceiveSample
             AuthenticationHeaderValue authHeader = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
             return authHeader;
         }
+
     }
 }
