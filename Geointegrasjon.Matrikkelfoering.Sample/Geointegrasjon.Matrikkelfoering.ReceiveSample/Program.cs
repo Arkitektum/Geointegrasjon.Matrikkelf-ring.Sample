@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Security.Cryptography.Pkcs;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using Newtonsoft.Json;
 
 namespace Geointegrasjon.Matrikkelfoering.ReceiveSample
 {
@@ -37,19 +38,13 @@ namespace Geointegrasjon.Matrikkelfoering.ReceiveSample
         /// <summary>
         /// URLen man POSTer til i SvarUt for å si at man har tatt imot forsendelsen
         /// </summary>
-        private const string UrlMottakVelykket = "https://svarut.ks.no/tjenester/svarinn/kvitterMottak/forsendelse/{0}"; //+ forsendelsesid
+        private const string UrlMottakVelykket = "https://test.svarut.ks.no/tjenester/svarinn/kvitterMottak/forsendelse/{0}"; //+ forsendelsesid
 
         /// <summary>
         /// URLen man POSTer til i SvarUt for å si at man ikke kan gjøre noe nyttig med forsendelsen.
         /// </summary>
-        private const string UrlMottakFeilet = "https://svarut.ks.no/tjenester/svarinn/mottakFeilet/forsendelse/{0}"; //+ forsendelsesid
-
-        /// <summary>
-        /// JSON man POSTer for å si ifra om at man ikke kan håndtere en melding som er kommet inn fordi den ikke er Geointegrasjon.Matrikkelføring
-        /// </summary>
-        private const string ErrorReceiptMessage = "{ \"feilmelding\":\"Kan ikke håndtere forsendelsestypen.\", \"permanent\":true}";
-        
-
+        private const string UrlMottakFeilet = "https://test.svarut.ks.no/tjenester/svarinn/mottakFeilet/forsendelse/{0}"; //+ forsendelsesid
+      
         static void Main()
         {
             RunProgram().Wait();
@@ -88,15 +83,15 @@ namespace Geointegrasjon.Matrikkelfoering.ReceiveSample
                 {
                     //If not, deny handling the message by sending a negative receipt
                     Console.WriteLine("Kan ikke håndtere denne meldingen, sender  negativ håndteringsrespons");
-                    await client.PostAsync(string.Format(UrlMottakFeilet, id), new StringContent(ErrorReceiptMessage));
+                    string errorReceiptMessage = JsonConvert.SerializeObject(new {feilmelding = "Kan ikke håndtere forsendelsestypen.", permanent = true });
+                    await client.PostAsync(string.Format(UrlMottakFeilet, id), new StringContent(errorReceiptMessage));
 
                     continue;
                 }
 
                 Console.WriteLine("Melding er av riktig forsendelsestype.");
 
-                //If OK, download files (Always a zip in our example, can be PDF)
-
+                //If OK, download files (Always a zip in our example, can be a single PDF in other cases)
                 
                 HttpResponseMessage fileResponse = await client.GetAsync(downloadUrl);
 
@@ -111,20 +106,24 @@ namespace Geointegrasjon.Matrikkelfoering.ReceiveSample
                 Console.WriteLine("Melding er lastet ned og dekryptert.");
 
                 //Send receipt that message was handled
-                //TODO: commented out right now for the sake of testing without having to push new meassages
+                //TODO: commented out right now for the sake of testing without having to push new messages
                 //await client.PostAsync(string.Format(UrlMottakVelykket, id), new StringContent(""));
+                Console.WriteLine("Mottak av melding bekreftet til SvarInn");
 
-                //Pretend we do something interesting with the data, then press any key
-                Console.WriteLine("Trykk enter for å sende beskjed om at matrikkelen har (liksom) blitt oppdatert.");
-                Console.ReadLine();
+                //Pretend we do something interesting with the data, then possibly send a response
+                Console.WriteLine("Trykk y og enter for å sende returbeskjed med SvarUt om at matrikkelen har (liksom) blitt oppdatert, eller bare enter for å ikke gjøre det.");
+                bool sendProcessedResponse = (Console.ReadLine() == "y");
 
-                //Send a return message that the data has been acted on
-                //TODO: Implement stuff using SvarUtService here!
-
-
-                Console.WriteLine("Trykk enter for å gå videre til neste melding.");
-                Console.ReadLine();
-
+                if (sendProcessedResponse)
+                {
+                    //Send a return message that the data has been acted on
+                    //TODO: Implement stuff using SvarUtService here! Need to define the message format first!
+                    Console.WriteLine("Returbeskjed sendt, går videre til neste melding.");
+                }
+                else
+                {
+                    Console.WriteLine("Går videre til neste melding uten å sende returbeskjed.");
+                }
             }
         }
 
