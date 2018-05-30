@@ -67,63 +67,70 @@ namespace Geointegrasjon.Matrikkelfoering.ReceiveSample
             JArray responseList = JArray.Parse(responseText);
 
             Console.WriteLine("Hentet liste over ventende meldinger:");
-            //For each waiting message:
-            foreach (JObject waitingMessage in responseList)
+            if (responseList.Count > 0)
             {
-                string tittel = (string)waitingMessage["tittel"];
-                string id = (string)waitingMessage["id"];
-                string downloadUrl = (string)waitingMessage["downloadUrl"];
-
-                Console.WriteLine("--------------------------------");
-                Console.WriteLine("Tittel: " + tittel);
-                Console.WriteLine("Forsendelses-ID: " + id);
-
-                //Check if it's the right type (making sure FIKS is not misconfigured)                
-                if ((string)waitingMessage["forsendelseType"] != ForsendelsesTypeGeointegrasjonMatrikkel)
+                //For each waiting message:
+                foreach (JObject waitingMessage in responseList)
                 {
-                    //If not, deny handling the message by sending a negative receipt
-                    Console.WriteLine("Kan ikke håndtere denne meldingen, sender  negativ håndteringsrespons");
-                    string errorReceiptMessage = JsonConvert.SerializeObject(new {feilmelding = "Kan ikke håndtere forsendelsestypen.", permanent = true });
-                    await client.PostAsync(string.Format(UrlMottakFeilet, id), new StringContent(errorReceiptMessage));
+                    string tittel = (string)waitingMessage["tittel"];
+                    string id = (string)waitingMessage["id"];
+                    string downloadUrl = (string)waitingMessage["downloadUrl"];
 
-                    continue;
-                }
+                    Console.WriteLine("--------------------------------");
+                    Console.WriteLine("Tittel: " + tittel);
+                    Console.WriteLine("Forsendelses-ID: " + id);
 
-                Console.WriteLine("Melding er av riktig forsendelsestype.");
+                    //Check if it's the right type (making sure FIKS is not misconfigured)                
+                    if ((string)waitingMessage["forsendelseType"] != ForsendelsesTypeGeointegrasjonMatrikkel)
+                    {
+                        //If not, deny handling the message by sending a negative receipt
+                        Console.WriteLine("Kan ikke håndtere denne meldingen, sender  negativ håndteringsrespons");
+                        string errorReceiptMessage = JsonConvert.SerializeObject(new {feilmelding = "Kan ikke håndtere forsendelsestypen.", permanent = true });
+                        await client.PostAsync(string.Format(UrlMottakFeilet, id), new StringContent(errorReceiptMessage));
 
-                //If OK, download files (Always a zip in our example, can be a single PDF in other cases)
+                        continue;
+                    }
+
+                    Console.WriteLine("Melding er av riktig forsendelsestype.");
+
+                    //If OK, download files (Always a zip in our example, can be a single PDF in other cases)
                 
-                HttpResponseMessage fileResponse = await client.GetAsync(downloadUrl);
+                    HttpResponseMessage fileResponse = await client.GetAsync(downloadUrl);
 
-                //Note that this only works for files that will fit into memory, so be careful with big BIMs
-                byte[] filecontent = await fileResponse.Content.ReadAsByteArrayAsync();
-                EnvelopedCms cmsData = new EnvelopedCms();
-                cmsData.Decode(filecontent);
-                //Remember to import the key as detailed in the readme
-                cmsData.Decrypt();
-                File.WriteAllBytes("forsendelse_" + id + ".zip", cmsData.ContentInfo.Content);
+                    //Note that this only works for files that will fit into memory, so be careful with big BIMs
+                    byte[] filecontent = await fileResponse.Content.ReadAsByteArrayAsync();
+                    EnvelopedCms cmsData = new EnvelopedCms();
+                    cmsData.Decode(filecontent);
+                    //Remember to import the key as detailed in the readme
+                    cmsData.Decrypt();
+                    File.WriteAllBytes("forsendelse_" + id + ".zip", cmsData.ContentInfo.Content);
                 
-                Console.WriteLine("Melding er lastet ned og dekryptert.");
+                    Console.WriteLine("Melding er lastet ned og dekryptert.");
 
-                //Send receipt that message was handled
-                //TODO: commented out right now for the sake of testing without having to push new messages
-                //await client.PostAsync(string.Format(UrlMottakVelykket, id), new StringContent(""));
-                Console.WriteLine("Mottak av melding bekreftet til SvarInn");
+                    //Send receipt that message was handled
+                    //TODO: commented out right now for the sake of testing without having to push new messages
+                    //await client.PostAsync(string.Format(UrlMottakVelykket, id), new StringContent(""));
+                    Console.WriteLine("Mottak av melding bekreftet til SvarInn");
 
-                //Pretend we do something interesting with the data, then possibly send a response
-                Console.WriteLine("Trykk y og enter for å sende returbeskjed med SvarUt om at matrikkelen har (liksom) blitt oppdatert, eller bare enter for å ikke gjøre det.");
-                bool sendProcessedResponse = (Console.ReadLine() == "y");
+                    //Pretend we do something interesting with the data, then possibly send a response
+                    Console.WriteLine("Trykk y og enter for å sende returbeskjed med SvarUt om at matrikkelen har (liksom) blitt oppdatert, eller bare enter for å ikke gjøre det.");
+                    bool sendProcessedResponse = (Console.ReadLine() == "y");
 
-                if (sendProcessedResponse)
-                {
-                    //Send a return message that the data has been acted on
-                    //TODO: Implement stuff using SvarUtService here! Need to define the message format first!
-                    Console.WriteLine("Returbeskjed sendt, går videre til neste melding.");
+                    if (sendProcessedResponse)
+                    {
+                        //Send a return message that the data has been acted on
+                        //TODO: Implement stuff using SvarUtService here! Need to define the message format first!
+                        Console.WriteLine("Returbeskjed sendt, går videre til neste melding.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Går videre til neste melding uten å sende returbeskjed.");
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("Går videre til neste melding uten å sende returbeskjed.");
-                }
+            }
+            else
+            {
+                Console.WriteLine("Det er ingen ventende meldinger!");
             }
         }
 
