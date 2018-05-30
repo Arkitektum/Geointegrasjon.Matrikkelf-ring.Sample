@@ -63,7 +63,6 @@ namespace Geointegrasjon.Matrikkelfoering.ReceiveSample
 
             //Download and parse incoming message
             string responseText = await response.Content.ReadAsStringAsync();
-
             JArray responseList = JArray.Parse(responseText);
 
             Console.WriteLine("Hentet liste over ventende meldinger:");
@@ -72,66 +71,81 @@ namespace Geointegrasjon.Matrikkelfoering.ReceiveSample
                 //For each waiting message:
                 foreach (JObject waitingMessage in responseList)
                 {
-                    string tittel = (string)waitingMessage["tittel"];
-                    string id = (string)waitingMessage["id"];
-                    string downloadUrl = (string)waitingMessage["downloadUrl"];
-
-                    Console.WriteLine("--------------------------------");
-                    Console.WriteLine("Tittel: " + tittel);
-                    Console.WriteLine("Forsendelses-ID: " + id);
-
-                    //Check if it's the right type (making sure FIKS is not misconfigured)                
-                    if ((string)waitingMessage["forsendelseType"] != ForsendelsesTypeGeointegrasjonMatrikkel)
-                    {
-                        //If not, deny handling the message by sending a negative receipt
-                        Console.WriteLine("Kan ikke håndtere denne meldingen, sender  negativ håndteringsrespons");
-                        string errorReceiptMessage = JsonConvert.SerializeObject(new {feilmelding = "Kan ikke håndtere forsendelsestypen.", permanent = true });
-                        await client.PostAsync(string.Format(UrlMottakFeilet, id), new StringContent(errorReceiptMessage));
-
-                        continue;
-                    }
-
-                    Console.WriteLine("Melding er av riktig forsendelsestype.");
-
-                    //If OK, download files (Always a zip in our example, can be a single PDF in other cases)
-                
-                    HttpResponseMessage fileResponse = await client.GetAsync(downloadUrl);
-
-                    //Note that this only works for files that will fit into memory, so be careful with big BIMs
-                    byte[] filecontent = await fileResponse.Content.ReadAsByteArrayAsync();
-                    EnvelopedCms cmsData = new EnvelopedCms();
-                    cmsData.Decode(filecontent);
-                    //Remember to import the key as detailed in the readme
-                    cmsData.Decrypt();
-                    File.WriteAllBytes("forsendelse_" + id + ".zip", cmsData.ContentInfo.Content);
-                
-                    Console.WriteLine("Melding er lastet ned og dekryptert.");
-
-                    //Send receipt that message was handled
-                    //TODO: commented out right now for the sake of testing without having to push new messages
-                    //await client.PostAsync(string.Format(UrlMottakVelykket, id), new StringContent(""));
-                    Console.WriteLine("Mottak av melding bekreftet til SvarInn");
-
-                    //Pretend we do something interesting with the data, then possibly send a response
-                    Console.WriteLine("Trykk y og enter for å sende returbeskjed med SvarUt om at matrikkelen har (liksom) blitt oppdatert, eller bare enter for å ikke gjøre det.");
-                    bool sendProcessedResponse = (Console.ReadLine() == "y");
-
-                    if (sendProcessedResponse)
-                    {
-                        //Send a return message that the data has been acted on
-                        //TODO: Implement stuff using SvarUtService here! Need to define the message format first!
-                        Console.WriteLine("Returbeskjed sendt, går videre til neste melding.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Går videre til neste melding uten å sende returbeskjed.");
-                    }
+                    await ProcessWaitingMessage(client, waitingMessage);
                 }
             }
             else
             {
                 Console.WriteLine("Det er ingen ventende meldinger!");
             }
+        }
+
+        private static async Task ProcessWaitingMessage(HttpClient client, JObject waitingMessage)
+        {
+            string tittel = (string)waitingMessage["tittel"];
+            string id = (string)waitingMessage["id"];
+            string downloadUrl = (string)waitingMessage["downloadUrl"];
+            string forsendelsesType = (string)waitingMessage["forsendelseType"];
+
+            Console.WriteLine("--------------------------------");
+            Console.WriteLine("Tittel: " + tittel);
+            Console.WriteLine("Forsendelses-ID: " + id);
+
+            //Check if it's the right type (making sure FIKS is not misconfigured)                
+            if (forsendelsesType != ForsendelsesTypeGeointegrasjonMatrikkel)
+            {
+                //If not, deny handling the message by sending a negative receipt
+                Console.WriteLine("Kan ikke håndtere denne meldingen, sender  negativ håndteringsrespons");
+                await DenyHandlingMessage(client, id);
+                return;
+            }
+
+            Console.WriteLine("Melding er av riktig forsendelsestype.");
+
+            //If OK, download files (Always a zip in our example, can be a single PDF in other cases)
+
+            await DownloadAndDecryptMessageFile(client, id, downloadUrl);
+
+            Console.WriteLine("Melding er lastet ned og dekryptert.");
+
+            //Send receipt that message was handled
+            //TODO: commented out right now for the sake of testing without having to push new messages
+            //await client.PostAsync(string.Format(UrlMottakVelykket, id), new StringContent(""));
+            Console.WriteLine("Mottak av melding bekreftet til SvarInn");
+
+            //Pretend we do something interesting with the data, then possibly send a response
+            Console.WriteLine("Trykk y og enter for å sende returbeskjed med SvarUt om at matrikkelen har (liksom) blitt oppdatert, eller bare enter for å ikke gjøre det.");
+            bool sendProcessedResponse = (Console.ReadLine() == "y");
+
+            if (sendProcessedResponse)
+            {
+                //Send a return message that the data has been acted on
+                //TODO: Implement stuff using SvarUtService here! Need to define the message format first!
+                Console.WriteLine("Returbeskjed sendt, går videre til neste melding.");
+            }
+            else
+            {
+                Console.WriteLine("Går videre til neste melding uten å sende returbeskjed.");
+            }
+        }
+
+        private static async Task DenyHandlingMessage(HttpClient client, string id)
+        {
+            string errorReceiptMessage = JsonConvert.SerializeObject(new { feilmelding = "Kan ikke håndtere forsendelsestypen.", permanent = true });
+            await client.PostAsync(string.Format(UrlMottakFeilet, id), new StringContent(errorReceiptMessage));
+        }
+
+        private static async Task DownloadAndDecryptMessageFile(HttpClient client, string id, string downloadUrl)
+        {
+            HttpResponseMessage fileResponse = await client.GetAsync(downloadUrl);
+
+            //Note that this only works for files that will fit into memory, so be careful with big BIMs
+            byte[] filecontent = await fileResponse.Content.ReadAsByteArrayAsync();
+            EnvelopedCms cmsData = new EnvelopedCms();
+            cmsData.Decode(filecontent);
+            //Remember to import the key as detailed in the readme
+            cmsData.Decrypt();
+            File.WriteAllBytes("forsendelse_" + id + ".zip", cmsData.ContentInfo.Content);
         }
 
         private static HttpClient CreateClient()
