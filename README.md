@@ -7,12 +7,12 @@ i henhold til ny (kommende) Geointegrasjonsstandard for overføring.
 Funksjonalitet
 --------------
 
-Eksemplet `SendSample` sender meldinger med forsendelsestype "`Geointegrasjon.Matrikkelføring`", 
-slik at de kan plukkes opp av mottakstjenesten som lytter på dette. 
-Meldingen sendes med egenskapen "kun digital levering", slik at den ikke går videre til brevpost ved
-manglende henting.  Det blir sendt meldinger med ulike nivåer av klarhet for 
-matrikkelføring, fra nivå 0 (det har skjedd et vedtak) til nivå 4 (full 
-situasjonsplan). Se koden for nærmere info om hva som gjøres i hvert nivå.
+Eksemplet `SendSample` sender meldinger med forsendelsestype 
+`Geointegrasjon.Matrikkelføring`, slik at de kan plukkes opp av mottakstjenesten  som lytter på dette. Meldingen sendes med egenskapen "kun digital levering", slik 
+at den ikke går videre til brevpost ved manglende henting.  Det blir sendt 
+meldinger med ulike nivåer av klarhet for matrikkelføring, fra nivå 0 (det har 
+skjedd et vedtak) til nivå 4 (full situasjonsplan). Se koden for nærmere info om 
+hva som gjøres i hvert nivå.
 
 Når du har sendt meldinger vil de være synlige i [KS Svarut sin testportal](https://test.svarut.ks.no).
 
@@ -26,9 +26,9 @@ Konfigurasjon
 
 Koden krever noen private nøkler som du må hente ut fra [KS Svarut sin testportal](https://test.svarut.ks.no).
 
-For at ikke de skal havne ut i kildekontroll, legges de i filen LocalSettings.config, 
-som er referert fra csproj-filene med lagt inn i .gitignore. Du må kopiere 
-LocalSettings.default.config og omdøpe den, og deretter legge inn verdiene.
+For at ikke de skal havne ut i kildekontroll, legges de i filen 
+LocalSettings.config, som er referert fra csproj-filene med lagt inn i .gitignore. 
+Du må kopiere LocalSettings.default.config og omdøpe den, og deretter legge inn verdiene.
 
 __For sending:__
  - `SvarUtUsername`: Navnet du har i SvarUt
@@ -36,8 +36,13 @@ __For sending:__
  - `OrgNrReceiver`: Orgnummeret du skal sende til, typisk din egen i dette scenariet. Må være en du har tilgang til å lese meldinger til!
 
 __For mottak:__
-- `MottakUserName`: Navnet du har i SvarInn
-- `MottakPassword`: Service-passordet som er generert i SvarInn (må regeneres om du glemmer den)
+- `MottakUserName`: Navnet på mottakersystemet som lytter på SvarInn
+- `MottakPassword`: Service-passordet som er generert for mottakersystemet (må regeneres om du glemmer den)
+
+I portalen må du konfigurere dette mottakersystemet til å lytte på orgnummeret du sender til i SendSample (`OrgNrReceiver`), og forsendelsestypen 
+`Geointegrasjon.Matrikkelføring`. (Per mai 2018 er det ikke mulig å skrive inn 
+forsendelsestypen selv, og man må derfor velge "Alle", som åpenbart ikke er gunstig
+i en ekte konfigurasjon. Bugen er meldt inn til KS.)
 
 I tillegg må du ha lastet opp et public sertifikat til portalen. Dette er fordi 
 alle meldinger fra FIKS til mottager krypteres, og hvis du ikke laster opp 
