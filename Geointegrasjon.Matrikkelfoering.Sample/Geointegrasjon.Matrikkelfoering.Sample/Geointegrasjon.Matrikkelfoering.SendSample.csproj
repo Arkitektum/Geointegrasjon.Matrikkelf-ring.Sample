@@ -49,9 +49,7 @@
     <Compile Include="GenerateN3.cs" />
     <Compile Include="GenerateN2.cs" />
     <Compile Include="GenerateN1.cs" />
-    <Compile Include="matrikkelfoering.cs">
-      <DependentUpon>matrikkelfoering.xsd</DependentUpon>
-    </Compile>
+    <Compile Include="matrikkelfoering_giFellesGeometri20120131_giFellesKodeliste20120131.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SvarUtService.cs" />
@@ -59,6 +57,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="giFellesGeometri20120131.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="giFellesKodeliste20120131.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="LocalSettings.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

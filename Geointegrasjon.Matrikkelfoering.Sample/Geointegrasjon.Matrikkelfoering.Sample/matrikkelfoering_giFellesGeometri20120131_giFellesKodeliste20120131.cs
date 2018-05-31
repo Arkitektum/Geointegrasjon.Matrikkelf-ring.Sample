@@ -95,6 +95,298 @@ namespace no.geointegrasjon.rep.matrikkelfoering {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31", IsNullable=false)]
+    public partial class Koordinat {
+        
+        private double xField;
+        
+        private double yField;
+        
+        private double zField;
+        
+        private bool zFieldSpecified;
+        
+        /// <remarks/>
+        public double x {
+            get {
+                return this.xField;
+            }
+            set {
+                this.xField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double y {
+            get {
+                return this.yField;
+            }
+            set {
+                this.yField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double z {
+            get {
+                return this.zField;
+            }
+            set {
+                this.zField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool zSpecified {
+            get {
+                return this.zFieldSpecified;
+            }
+            set {
+                this.zFieldSpecified = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31", IsNullable=false)]
+    public partial class Ring {
+        
+        private Koordinat[] lukketKurveField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("liste", IsNullable=false)]
+        public Koordinat[] lukketKurve {
+            get {
+                return this.lukketKurveField;
+            }
+            set {
+                this.lukketKurveField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(KoordinatsystemKode))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Kodeliste/xml.schema/2012.01.31")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Kodeliste/xml.schema/2012.01.31", IsNullable=false)]
+    public partial class Kode {
+        
+        private string kodeverdiField;
+        
+        private string kodebeskrivelseField;
+        
+        private bool erGyldigField;
+        
+        private bool erGyldigFieldSpecified;
+        
+        /// <remarks/>
+        public string kodeverdi {
+            get {
+                return this.kodeverdiField;
+            }
+            set {
+                this.kodeverdiField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string kodebeskrivelse {
+            get {
+                return this.kodebeskrivelseField;
+            }
+            set {
+                this.kodebeskrivelseField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool erGyldig {
+            get {
+                return this.erGyldigField;
+            }
+            set {
+                this.erGyldigField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool erGyldigSpecified {
+            get {
+                return this.erGyldigFieldSpecified;
+            }
+            set {
+                this.erGyldigFieldSpecified = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31", IsNullable=false)]
+    public partial class KoordinatsystemKode : Kode {
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bbox))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Punkt))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Kurve))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Flate))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31", IsNullable=false)]
+    public partial class Geometri {
+        
+        private KoordinatsystemKode koordinatsystemField;
+        
+        /// <remarks/>
+        public KoordinatsystemKode koordinatsystem {
+            get {
+                return this.koordinatsystemField;
+            }
+            set {
+                this.koordinatsystemField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31", IsNullable=false)]
+    public partial class Bbox : Geometri {
+        
+        private Koordinat nedreVenstreField;
+        
+        private Koordinat oevreHoeyreField;
+        
+        /// <remarks/>
+        public Koordinat nedreVenstre {
+            get {
+                return this.nedreVenstreField;
+            }
+            set {
+                this.nedreVenstreField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Koordinat oevreHoeyre {
+            get {
+                return this.oevreHoeyreField;
+            }
+            set {
+                this.oevreHoeyreField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31", IsNullable=false)]
+    public partial class Punkt : Geometri {
+        
+        private Koordinat posisjonField;
+        
+        /// <remarks/>
+        public Koordinat posisjon {
+            get {
+                return this.posisjonField;
+            }
+            set {
+                this.posisjonField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31", IsNullable=false)]
+    public partial class Kurve : Geometri {
+        
+        private Koordinat[] linjeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("liste", IsNullable=false)]
+        public Koordinat[] linje {
+            get {
+                return this.linjeField;
+            }
+            set {
+                this.linjeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31", IsNullable=false)]
+    public partial class Flate : Geometri {
+        
+        private Ring[] indreAvgrensningField;
+        
+        private Ring ytreAvgrensningField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("liste", IsNullable=false)]
+        public Ring[] indreAvgrensning {
+            get {
+                return this.indreAvgrensningField;
+            }
+            set {
+                this.indreAvgrensningField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Ring ytreAvgrensning {
+            get {
+                return this.ytreAvgrensningField;
+            }
+            set {
+                this.ytreAvgrensningField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1")]
     [System.Xml.Serialization.XmlRootAttribute("Avloepstilknytning", Namespace="http://rep.geointegrasjon.no/Matrikkel/foering/v1", IsNullable=false)]
     public partial class AvloepstilknytningType {
@@ -554,6 +846,10 @@ namespace no.geointegrasjon.rep.matrikkelfoering {
         
         private System.DateTime registrertDatoField;
         
+        private string saksbehandlerField;
+        
+        private Punkt posisjonField;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public string systemId {
@@ -693,6 +989,28 @@ namespace no.geointegrasjon.rep.matrikkelfoering {
             }
             set {
                 this.registrertDatoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string saksbehandler {
+            get {
+                return this.saksbehandlerField;
+            }
+            set {
+                this.saksbehandlerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public Punkt posisjon {
+            get {
+                return this.posisjonField;
+            }
+            set {
+                this.posisjonField = value;
             }
         }
     }
@@ -1902,6 +2220,224 @@ namespace no.geointegrasjon.rep.matrikkelfoering {
             }
             set {
                 this.beskrivelseField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31", IsNullable=false)]
+    public partial class KoordinatsystemKodeListe {
+        
+        private KoordinatsystemKode[] listeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("liste")]
+        public KoordinatsystemKode[] liste {
+            get {
+                return this.listeField;
+            }
+            set {
+                this.listeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31", IsNullable=false)]
+    public partial class FlateListe {
+        
+        private Flate[] listeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("liste")]
+        public Flate[] liste {
+            get {
+                return this.listeField;
+            }
+            set {
+                this.listeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31", IsNullable=false)]
+    public partial class KoordinatListe {
+        
+        private Koordinat[] listeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("liste")]
+        public Koordinat[] liste {
+            get {
+                return this.listeField;
+            }
+            set {
+                this.listeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31", IsNullable=false)]
+    public partial class PunktListe {
+        
+        private Punkt[] listeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("liste")]
+        public Punkt[] liste {
+            get {
+                return this.listeField;
+            }
+            set {
+                this.listeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31", IsNullable=false)]
+    public partial class RingListe {
+        
+        private Ring[] listeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("liste")]
+        public Ring[] liste {
+            get {
+                return this.listeField;
+            }
+            set {
+                this.listeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31", IsNullable=false)]
+    public partial class BboxListe {
+        
+        private Bbox[] listeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("liste")]
+        public Bbox[] liste {
+            get {
+                return this.listeField;
+            }
+            set {
+                this.listeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31", IsNullable=false)]
+    public partial class OmraadeListe {
+        
+        private Omraade[] listeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("liste")]
+        public Omraade[] liste {
+            get {
+                return this.listeField;
+            }
+            set {
+                this.listeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Geometri/xml.schema/2012.01.31", IsNullable=false)]
+    public partial class Omraade {
+        
+        private Punkt punktField;
+        
+        private Flate flateField;
+        
+        /// <remarks/>
+        public Punkt punkt {
+            get {
+                return this.punktField;
+            }
+            set {
+                this.punktField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Flate flate {
+            get {
+                return this.flateField;
+            }
+            set {
+                this.flateField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Kodeliste/xml.schema/2012.01.31")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://rep.geointegrasjon.no/Felles/Kodeliste/xml.schema/2012.01.31", IsNullable=false)]
+    public partial class KodeListe {
+        
+        private Kode[] listeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("liste")]
+        public Kode[] liste {
+            get {
+                return this.listeField;
+            }
+            set {
+                this.listeField = value;
             }
         }
     }
