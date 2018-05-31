@@ -18,24 +18,39 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
 
         public void Send(ByggesakType byggesak, string sendToOrganizationNumber, string sendToName, dokument[] dokumenter)
         {
+            string tittel = byggesak.tittel;
+            string systemId = byggesak.systemId;
 
+            Send(tittel, systemId, sendToOrganizationNumber, sendToName, dokumenter);
+        }
+
+        public static void Send(string tittel, string systemId, string sendToOrganizationNumber, string sendToName, dokument[] dokumenter)
+        {
+            string avgiverSystem = "eByggesak system";
+            string forsendelseType = ForsendelsesTypeGeointegrasjonMatrikkel;
+
+            Send(avgiverSystem, forsendelseType, tittel, systemId, sendToOrganizationNumber, sendToName, dokumenter);
+        }
+
+        public static void Send(string avgiverSystem, string forsendelseType, string tittel, string systemId, string sendToOrganizationNumber, string sendToName, dokument[] dokumenter)
+        {
             forsendelse forsendelse = new forsendelse
             {
-                avgivendeSystem = "eByggesak system",
-                eksternref = byggesak.systemId,
+                avgivendeSystem = avgiverSystem,
+                eksternref = systemId,
 
                 metadataFraAvleverendeSystem = new noarkMetadataFraAvleverendeSakssystem
                 {
-                    tittel = byggesak.tittel
+                    tittel = tittel
                 },
                 metadataForImport = new noarkMetadataForImport
                 {
                     saksaar = 2018,
                     sakssekvensnummer = 12345,
-                    tittel = byggesak.tittel,
+                    tittel = tittel,
                     journalposttype = "I"
                 },
-                forsendelseType = ForsendelsesTypeGeointegrasjonMatrikkel,
+                forsendelseType = forsendelseType,
                 mottaker = new adresse()
                 {
                     digitalAdresse = new organisasjonDigitalAdresse()
@@ -51,7 +66,7 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
 
                 },
                 kunDigitalLevering = true,
-                tittel = byggesak.tittel,
+                tittel = tittel,
                 dokumenter = dokumenter
             };
 
@@ -71,7 +86,6 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
                 }
 
             }
-
         }
 
         private static ForsendelsesServiceV8Client GetWebServiceClient()
