@@ -76,17 +76,26 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
             //
             // G2: Matrikkelopplysninger
             //
-            // TODO: Add Matrikkelopplysninger
+            // 
             var byggesakG2 = new GenerateN2().GenerateSample();
             SendByggesakToSvarut(byggesakG2, dokumenter);
-            Console.WriteLine("Sendte melding med nivå 2, med matrikkelopplysninger");
+            Console.WriteLine("Sendte melding med nivå 2, med matrikkelopplysninger for enebolig");
+
+            byggesakG2 = new GenerateN2().GenerateSample2();
+            SendByggesakToSvarut(byggesakG2, dokumenter);
+            Console.WriteLine("Sendte melding med nivå 2, med matrikkelopplysninger for 5 tomannsboliger");
+            
+            //TODO - delvis godkjent vedtak , tilbygg med løpenr/bygningsendringer? 
+            //seksjonerte eiendommer
 
             //
             // G3: ByggesaksBIM
             //
             var bim = GetDokByggesaksBim();
             dokumenter.Add(bim);
-            //Console.WriteLine("Sendte melding med nivå 3, med BIM");
+            var byggesakG3 = new GenerateN2().GenerateSample();
+            SendByggesakToSvarut(byggesakG3, dokumenter);
+            Console.WriteLine("Sendte melding med nivå 3, med BIM");
 
             //
             // G4: digital situasjonsplan
