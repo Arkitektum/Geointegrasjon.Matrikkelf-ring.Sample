@@ -131,7 +131,7 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
             dokument bim = new dokument()
             {
                 dokumentType = "ByggesaksBIM",
-                data = new byte[1],
+                data = File.ReadAllBytes(@"samplefiles\bim.ifc"),
                 filnavn = "bim.ifc",
                 mimetype = "application/ifc"
             };
