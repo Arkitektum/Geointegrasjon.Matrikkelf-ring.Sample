@@ -12,14 +12,17 @@ Eksemplet `SendSample` sender meldinger med forsendelsestype
 at den ikke går videre til brevpost ved manglende henting.  Det blir sendt 
 meldinger med ulike nivåer av klarhet for matrikkelføring, fra nivå 0 (det har 
 skjedd et vedtak) til nivå 4 (full situasjonsplan). Se koden for nærmere info om 
-hva som gjøres i hvert nivå.
+hva som gjøres i hvert nivå. Dette eksempelet tilsvarer altså det arbeidet som 
+skal gjøres i eByggeSak-systemet for å sende meldinger til matrikkelklienten.
 
 Når du har sendt meldinger vil de være synlige i [KS Svarut sin testportal](https://test.svarut.ks.no).
 
 Eksempelet `ReceiveSample` er en mottakstjeneste som lytter på slike meldinger. 
 Den henter ut listen over mottatte meldinger, laster ned innholdet og dekrypterer 
 det, og sender kvittering på at innholdet er korrekt mottatt. Når SvarInn mottar
-kvitteringen vil den slette meldingen i sin ende.
+kvitteringen vil den slette meldingen i sin ende. Dette eksempelet tilsvarer altså det arbeidet som skal gjøres i matrikkelklienten/automatisert 
+matrikkeoppdateringstjeneste for å ta imot informasjonen og bekrefte at 
+matrikkelføring er utført.
 
 Konfigurasjon
 -------------
