@@ -60,6 +60,9 @@
     <None Include="giFellesGeometri20120131.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="giFellesKodeliste20120131 - Copy.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="giFellesKodeliste20120131.xsd">
       <SubType>Designer</SubType>
     </None>
