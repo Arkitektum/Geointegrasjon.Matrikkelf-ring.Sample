@@ -16,7 +16,7 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
         ///Søknaden kan etterfølges med endringssøknad, midlertidig brukstillatelse eller ferdigattest
         ///Mer om søknaden - https://dibk-utvikling.atlassian.net/wiki/spaces/FB/pages/31129622/S+knad+om+tillatelse+i+ett+trinn
         /// </summary>
-        /// <returns>byggesak med utfylt matrikkelopplysninger for ny enebolig</returns>
+        /// <returns>Byggesak med utfylt matrikkelopplysninger for ny enebolig</returns>
         public ByggesakType GenerateSample()
         {
 
@@ -176,7 +176,7 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
         ///Søknaden må etterfølges med minst en igangsettingssøknad
         ///Mer om søknaden - https://dibk-utvikling.atlassian.net/wiki/spaces/FB/pages/31129620/S+knad+om+rammetillatelse
         /// </summary>
-        /// <returns>for oppføring av 5 tomannsboliger</returns>
+        /// <returns>Byggesak med utfylt matrikkelopplysninger for oppføring av 5 tomannsboliger</returns>
         public ByggesakType GenerateSample2()
         {
 
