@@ -82,21 +82,18 @@ namespace Geointegrasjon.Matrikkelfoering.ReceiveSample
 
         private static async Task ProcessWaitingMessage(HttpClient client, JObject waitingMessage)
         {
-            string tittel = (string)waitingMessage["tittel"];
-            string id = (string)waitingMessage["id"];
-            string downloadUrl = (string)waitingMessage["downloadUrl"];
-            string forsendelsesType = (string)waitingMessage["forsendelseType"];
+            MottattMelding message = new MottattMelding(waitingMessage);
 
             Console.WriteLine("--------------------------------");
-            Console.WriteLine("Tittel: " + tittel);
-            Console.WriteLine("Forsendelses-ID: " + id);
+            Console.WriteLine("Tittel: " + message.Tittel);
+            Console.WriteLine("Forsendelses-ID: " + message.Id);
 
             //Check if it's the right type (making sure FIKS is not misconfigured)                
-            if (forsendelsesType != ForsendelsesTypeGeointegrasjonMatrikkel)
+            if (message.Forsendelsestype != ForsendelsesTypeGeointegrasjonMatrikkel)
             {
                 //If not, deny handling the message by sending a negative receipt
                 Console.WriteLine("Kan ikke håndtere denne meldingen, sender  negativ håndteringsrespons");
-                await DenyHandlingMessage(client, id);
+                await DenyHandlingMessage(client, message.Id);
                 return;
             }
 
@@ -104,7 +101,7 @@ namespace Geointegrasjon.Matrikkelfoering.ReceiveSample
 
             //If OK, download files (Always a zip in our example, can be a single PDF in other cases)
 
-            await DownloadAndDecryptMessageFile(client, id, downloadUrl);
+            await DownloadAndDecryptMessageFile(client, message.Id, message.DownloadUrl);
 
             Console.WriteLine("Melding er lastet ned og dekryptert.");
 
@@ -151,12 +148,12 @@ namespace Geointegrasjon.Matrikkelfoering.ReceiveSample
         private static HttpClient CreateClient()
         {
             var client = new HttpClient();
-            AuthenticationHeaderValue authHeader = createAuthHeader();
+            AuthenticationHeaderValue authHeader = CreateAuthHeader();
             client.DefaultRequestHeaders.Authorization = authHeader;
             return client;
         }
 
-        private static AuthenticationHeaderValue createAuthHeader()
+        private static AuthenticationHeaderValue CreateAuthHeader()
         {
             string mottakUserName = ConfigurationManager.AppSettings["MottakUserName"];
             string mottakPassword = ConfigurationManager.AppSettings["MottakPassword"];
