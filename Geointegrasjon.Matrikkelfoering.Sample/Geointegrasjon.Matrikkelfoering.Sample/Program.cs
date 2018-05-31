@@ -85,7 +85,7 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
             SendByggesakToSvarut(byggesakG2, dokumenter);
             Console.WriteLine("Sendte melding med nivå 2, med matrikkelopplysninger for 5 tomannsboliger");
             
-            //TODO - delvis godkjent vedtak , tilbygg med løpenr/bygningsendringer? 
+            //TODO - delvis godkjent vedtak , tilbygg med løpenr/bygningsendringer? riving
             //seksjonerte eiendommer
 
             //

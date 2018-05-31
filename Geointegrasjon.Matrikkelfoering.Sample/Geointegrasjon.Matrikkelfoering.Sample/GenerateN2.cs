@@ -188,7 +188,8 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
             byggesak.tiltakstype = new[] { new TiltaktypeType() { kode = "nyttbyggboligformal", beskrivelse = "Nytt bygg - boligformål" } };
             byggesak.vedtak = new VedtakType() { beskrivelse = "Vedtak om rammetillatelse", status = new VedtakstypeType() { kode = "1", beskrivelse = "Godkjent" }, vedtaksdato = DateTime.Now };
             byggesak.saksbehandler = "Michael";
-            //TODO ansvarlig søker og tiltakshaver
+            byggesak.ansvarligSoeker = new PartType() { navn = "Arkitekt Flink", organisasjonsnummer = "123456789" };
+            byggesak.tiltakshaver = new PartType() { navn = "Hans Utbygger", foedselsnummer = "12345678901" };
 
             byggesak.matrikkelopplysninger = new MatrikkelopplysningerType();
             byggesak.matrikkelopplysninger.adresse = new[]
