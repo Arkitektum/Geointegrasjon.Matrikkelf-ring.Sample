@@ -70,6 +70,9 @@
     <None Include="matrikkelfoering.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="samplefiles\bim.ifc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

@@ -21,7 +21,7 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
 
             forsendelse forsendelse = new forsendelse
             {
-                avgivendeSystem = "Saksbehandlingssystem",
+                avgivendeSystem = "eByggesak system",
                 eksternref = byggesak.systemId,
 
                 metadataFraAvleverendeSystem = new noarkMetadataFraAvleverendeSakssystem
