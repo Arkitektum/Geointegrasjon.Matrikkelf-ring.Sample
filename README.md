@@ -17,6 +17,8 @@ skal gjøres i eByggeSak-systemet for å sende meldinger til matrikkelklienten.
 
 Når du har sendt meldinger vil de være synlige i [KS Svarut sin testportal](https://test.svarut.ks.no).
 
+Se dokumentasjon på [oppsett FIKS testmiljø](https://ks-no.github.io/svarut/testmiljo/).
+
 Eksempelet `ReceiveSample` er en mottakstjeneste som lytter på slike meldinger. 
 Den henter ut listen over mottatte meldinger, laster ned innholdet og dekrypterer 
 det, og sender kvittering på at innholdet er korrekt mottatt. Når SvarInn mottar
@@ -30,7 +32,7 @@ Konfigurasjon
 Koden krever noen private nøkler som du må hente ut fra [KS Svarut sin testportal](https://test.svarut.ks.no).
 
 For at ikke de skal havne ut i kildekontroll, legges de i filen 
-LocalSettings.config, som er referert fra csproj-filene med lagt inn i .gitignore. 
+LocalSettings.config, som er referert fra csproj-filene men lagt inn i .gitignore. 
 Du må kopiere LocalSettings.default.config og omdøpe den, og deretter legge inn verdiene.
 
 __For sending:__
@@ -43,9 +45,8 @@ __For mottak:__
 - `MottakPassword`: Service-passordet som er generert for mottakersystemet (må regeneres om du glemmer den)
 
 I portalen må du konfigurere dette mottakersystemet til å lytte på orgnummeret du sender til i SendSample (`OrgNrReceiver`), og forsendelsestypen 
-`Geointegrasjon.Matrikkelføring`. (Per mai 2018 er det ikke mulig å skrive inn 
-forsendelsestypen selv, og man må derfor velge "Alle", som åpenbart ikke er gunstig
-i en ekte konfigurasjon. Bugen er meldt inn til KS.)
+`Geointegrasjon.Matrikkelføring`. Se dokumentasjon på [SvarUt - SvarInn adressering](https://ks-no.github.io/svarut/svarut-svarinn-adressering/) for bruk og oppsett av forsendelsestype. (Per mai 2018 er det ikke mulig å skrive inn 
+forsendelsestypen selv, og man må derfor velge "Alle")
 
 I tillegg må du ha lastet opp et public sertifikat til portalen. Dette er fordi 
 alle meldinger fra FIKS til mottager krypteres, og hvis du ikke laster opp 

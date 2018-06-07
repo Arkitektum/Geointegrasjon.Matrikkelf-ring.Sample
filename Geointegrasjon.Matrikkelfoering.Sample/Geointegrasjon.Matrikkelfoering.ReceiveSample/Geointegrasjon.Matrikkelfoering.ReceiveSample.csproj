@@ -38,6 +38,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,7 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MottattMelding.cs" />
+    <Compile Include="Forsendelse.cs" />
+    <Compile Include="MatrikkelFoeringsRespons.cs">
+      <DependentUpon>MatrikkelFoeringsRespons.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,7 +61,16 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="LocalSettings.default.config" />
+    <None Include="MatrikkelFoeringsRespons.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Geointegrasjon.Matrikkelfoering.Sample\Geointegrasjon.Matrikkelfoering.SendSample.csproj">
+      <Project>{3e93fd5b-d507-46e3-b899-eb411ccb9176}</Project>
+      <Name>Geointegrasjon.Matrikkelfoering.SendSample</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
