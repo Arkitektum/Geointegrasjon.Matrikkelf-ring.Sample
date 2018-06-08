@@ -65,11 +65,14 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
             Console.WriteLine("Sendte 7 meldinger med nivå 0, Saksnummer på vedtak");
 
             //
-            // G1: Gjeldende tegninger
+            // G1: Gjeldende tegninger og (vanlig) situasjonsplan
             //
             var byggesakG1 = new GenerateN1().GenerateSample();
             var tegning1 = GetDokTegninger();
             dokumenter.Add(tegning1);
+            var sitplan = GetDokSituasjonsPlan();
+            dokumenter.Add(sitplan);
+
             SendByggesakToSvarut(byggesakG1, dokumenter);
             Console.WriteLine("Sendte melding med nivå 1, Gjeldende tegninger");
 
@@ -100,9 +103,8 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
             //
             // G4: digital situasjonsplan
             //
-            var sitplan = GetDokSituasjonsPlan();
-            dokumenter.Add(sitplan);
-            //Console.WriteLine("Sendte melding med nivå 4, med situasjonsplan");
+            
+            //Console.WriteLine("Sendte melding med nivå 4, med digital situasjonsplan");
 
             Console.WriteLine("pause");
         }
