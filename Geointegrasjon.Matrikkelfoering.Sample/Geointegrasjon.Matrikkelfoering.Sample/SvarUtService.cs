@@ -21,22 +21,18 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
             string tittel = byggesak.tittel;
             string systemId = byggesak.systemId;
 
-            // LARS: saksaar & sakssekvensnummer from Byggesak
-            Send(tittel, systemId, sendToOrganizationNumber, sendToName, dokumenter,byggesak.saksnummer.saksaar, byggesak.saksnummer.sakssekvensnummer);
-
+            Send(tittel, systemId, sendToOrganizationNumber, sendToName, dokumenter);
         }
 
-        public static void Send(string tittel, string systemId, string sendToOrganizationNumber, string sendToName, dokument[] dokumenter,
-            string saksAar, string saksSekvensnummer)
+        public static void Send(string tittel, string systemId, string sendToOrganizationNumber, string sendToName, dokument[] dokumenter)
         {
             string avgiverSystem = "eByggesak system";
             string forsendelseType = ForsendelsesTypeGeointegrasjonMatrikkel;
 
-            Send(avgiverSystem, forsendelseType, tittel, systemId, sendToOrganizationNumber, sendToName, dokumenter, saksAar, saksSekvensnummer);
+            Send(avgiverSystem, forsendelseType, tittel, systemId, sendToOrganizationNumber, sendToName, dokumenter);
         }
 
-        public static void Send(string avgiverSystem, string forsendelseType, string tittel, string systemId, string sendToOrganizationNumber, string sendToName, dokument[] dokumenter,
-            string saksAar="2018", string saksSekvensnummer="12345")
+        public static void Send(string avgiverSystem, string forsendelseType, string tittel, string systemId, string sendToOrganizationNumber, string sendToName, dokument[] dokumenter)
         {
             forsendelse forsendelse = new forsendelse
             {
@@ -47,10 +43,10 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
                 {
                     tittel = tittel
                 },
-                metadataForImport = new noarkMetadataForImport //// LARS: saksaar & sakssekvensnummer from Byggesak
+                metadataForImport = new noarkMetadataForImport
                 {
-                    saksaar = Convert.ToInt32(saksAar), // saksaar = 2018,
-                    sakssekvensnummer = Convert.ToInt32(saksSekvensnummer), // sakssekvensnummer = 12345,
+                    saksaar = 2018,
+                    sakssekvensnummer = 12345,
                     tittel = tittel,
                     journalposttype = "I"
                 },

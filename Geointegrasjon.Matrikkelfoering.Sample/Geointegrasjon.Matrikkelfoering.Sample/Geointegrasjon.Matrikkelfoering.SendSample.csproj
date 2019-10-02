@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GenerateN0.cs" />
-    <Compile Include="GenerateN2N3_NOIS.cs" />
     <Compile Include="GenerateN4.cs" />
     <Compile Include="GenerateN3.cs" />
     <Compile Include="GenerateN2.cs" />
@@ -57,9 +56,7 @@
     <Compile Include="SvarUtForsendelse8.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
     <None Include="giFellesGeometri20120131.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -74,15 +71,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="samplefiles\bim.ifc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="samplefiles\DokSitplan.pdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="samplefiles\DokTegning.pdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="samplefiles\NTNU Retorten eByggesak.ifc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

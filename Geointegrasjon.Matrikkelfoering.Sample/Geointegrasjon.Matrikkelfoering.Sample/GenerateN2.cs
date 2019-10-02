@@ -23,8 +23,7 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
             var byggesak = new ByggesakType();
             byggesak.adresse = "Byggestedgate 1";
             byggesak.tittel = "Ett trinn søknad for enebolig i Byggestedgate 1";
-            byggesak.saksnummer = new SaksnummerType() { saksaar = "2019", sakssekvensnummer = "123456" };
-            
+            byggesak.saksnummer = new SaksnummerType() { saksaar = "2018", sakssekvensnummer = "123456" };
             byggesak.kategori = new ProsesskategoriType() { kode = "ET", beskrivelse = "Søknad om tillatelse i ett trinn" };
             byggesak.tiltakstype = new[] { new TiltaktypeType() { kode = "nyttbyggboligformal", beskrivelse = "Nytt bygg - boligformål" } };
             byggesak.vedtak = new VedtakType() { beskrivelse = "Vedtak om byggetillatelse", status = new VedtakstypeType() { kode = "1", beskrivelse = "Godkjent" }, vedtaksdato = DateTime.Now };
@@ -58,7 +57,7 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
                         {
                             new EtasjeType
                             {
-
+                                 
                                 etasjeplan = new EtasjeplanType
                                 {
                                     kode = "H",
@@ -111,7 +110,7 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
                                     adressenavn = "Gatenavn",
                                     adressenummer = "1",
                                     adressebokstav = "A"
-
+                                    
                                 },
                                 endring =  EndringsstatusType.Ny
                             }
@@ -130,7 +129,7 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
 
                         energiforsyning = new EnergiforsyningType()
                         {
-                            varmefordeling = new[]
+                            varmefordeling = new[]  
                             {
                                 new VarmefordelingType()
                                 {
@@ -165,8 +164,8 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
                     }
             };
 
-
-
+            
+                
 
             return byggesak;
         }
