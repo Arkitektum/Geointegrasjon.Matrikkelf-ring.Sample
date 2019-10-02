@@ -21,18 +21,22 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
             string tittel = byggesak.tittel;
             string systemId = byggesak.systemId;
 
-            Send(tittel, systemId, sendToOrganizationNumber, sendToName, dokumenter);
+            // LARS: saksaar & sakssekvensnummer from Byggesak
+            Send(tittel, systemId, sendToOrganizationNumber, sendToName, dokumenter,byggesak.saksnummer.saksaar, byggesak.saksnummer.sakssekvensnummer);
+
         }
 
-        public static void Send(string tittel, string systemId, string sendToOrganizationNumber, string sendToName, dokument[] dokumenter)
+        public static void Send(string tittel, string systemId, string sendToOrganizationNumber, string sendToName, dokument[] dokumenter,
+            string saksAar, string saksSekvensnummer)
         {
             string avgiverSystem = "eByggesak system";
             string forsendelseType = ForsendelsesTypeGeointegrasjonMatrikkel;
 
-            Send(avgiverSystem, forsendelseType, tittel, systemId, sendToOrganizationNumber, sendToName, dokumenter);
+            Send(avgiverSystem, forsendelseType, tittel, systemId, sendToOrganizationNumber, sendToName, dokumenter, saksAar, saksSekvensnummer);
         }
 
-        public static void Send(string avgiverSystem, string forsendelseType, string tittel, string systemId, string sendToOrganizationNumber, string sendToName, dokument[] dokumenter)
+        public static void Send(string avgiverSystem, string forsendelseType, string tittel, string systemId, string sendToOrganizationNumber, string sendToName, dokument[] dokumenter,
+            string saksAar="2018", string saksSekvensnummer="12345")
         {
             forsendelse forsendelse = new forsendelse
             {
@@ -43,10 +47,10 @@ namespace Geointegrasjon.Matrikkelfoering.SendSample
                 {
                     tittel = tittel
                 },
-                metadataForImport = new noarkMetadataForImport
+                metadataForImport = new noarkMetadataForImport //// LARS: saksaar & sakssekvensnummer from Byggesak
                 {
-                    saksaar = 2018,
-                    sakssekvensnummer = 12345,
+                    saksaar = Convert.ToInt32(saksAar), // saksaar = 2018,
+                    sakssekvensnummer = Convert.ToInt32(saksSekvensnummer), // sakssekvensnummer = 12345,
                     tittel = tittel,
                     journalposttype = "I"
                 },
